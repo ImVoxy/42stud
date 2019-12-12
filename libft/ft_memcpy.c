@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:45:36 by alpascal          #+#    #+#             */
-/*   Updated: 2019/11/19 13:42:08 by alpascal         ###   ########.fr       */
+/*   Updated: 2019/11/21 13:47:02 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (!src)
-		return (dst);
-	if (!dst)
+	if (!dst && !src)
 		return (NULL);
 	while (i < n)
 	{

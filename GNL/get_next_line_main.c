@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   get_next_line_main.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/04 12:38:44 by alpascal          #+#    #+#             */
-/*   Updated: 2019/11/21 14:00:48 by alpascal         ###   ########.fr       */
+/*   Created: 2019/11/27 11:15:38 by alpascal          #+#    #+#             */
+/*   Updated: 2019/12/12 16:47:55 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../GNL/get_next_line.h"
+#include <stdio.h>
+#include <fcntl.h>
 
-int			ft_atoi(const char *str)
+int main()
 {
-	int					i;
-	int					s;
-	int					val;
-
-	val = 0;
-	s = 1;
-	i = 0;
-	while ((str[i] > 8 && str[i] < 14) || str[i] == 32)
-		i++;
-	if (str[i] == '-')
-		s *= -1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	int fd;
+	int ret = 1;
+	char *str;
+	fd = open("testn", O_RDONLY);
+	while (ret > 0)
 	{
-		val = val * 10 + str[i] - '0';
-		i++;
+		ret = get_next_line(fd, &str);
+		printf("%d - %s", ret, str);
+		free(str);
+		str = NULL;
 	}
-	return (val * s);
+//	if (str)
+	free(str);
+	//ret = get_next_line(fd, &str);
+	return (0);
 }

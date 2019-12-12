@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 09:03:58 by alpascal          #+#    #+#             */
-/*   Updated: 2019/11/19 13:37:47 by alpascal         ###   ########.fr       */
+/*   Updated: 2019/11/21 14:21:51 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	int i;
+	size_t i;
 
 	i = 0;
-	if (s)
+	while (i < n)
 	{
-		while (n > 0)
-		{
-			((char *)s)[i] = 0;
-			i++;
-			n--;
-		}
+		((unsigned char *)s)[i] = 0;
+		i++;
 	}
 }
