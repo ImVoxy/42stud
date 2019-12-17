@@ -23,6 +23,7 @@ int		isnl(char *str, int test);
 char	*ft_strdup(char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_substr_no_nl(char *str);
 
 void	*ft_calloc(size_t count, size_t size);
 
