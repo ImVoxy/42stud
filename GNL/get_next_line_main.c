@@ -35,6 +35,7 @@ void	loop(int fd, int numtest)
 	printf("fin ici\n\n");
 //	if (str)
 	free(str);
+	str = NULL;
 	//ret = get_next_line(fd, &str);
 }
 

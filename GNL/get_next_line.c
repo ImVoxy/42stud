@@ -33,10 +33,16 @@ int		isnl(char *str, int test)
 
 char		*ft_substr_no_nl(char *str)
 {
+	char *test;
+
 	if (str[0] == '\n')
 	{
-		if (isnl(ft_substr(str, 1, isnl(str, 3)), 2))
+		if (isnl(test = ft_substr(str, 1, isnl(str, 3)), 2))
+		{
+			free(test);
 			return (ft_substr(str, 1, isnl(str, 3) - 1));
+		}
+		free(test);
 		return (ft_substr(str, 1, isnl(str, 3)));
 	}
 	return (ft_substr(str, 0, isnl(str, 1)));
