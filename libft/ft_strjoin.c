@@ -16,20 +16,24 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*str;
 	unsigned int	i;
+	unsigned int	lens1;
+	unsigned int	lens2;
 
 	i = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	if (!(str = malloc(sizeof(*str) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
+	lens1 = ft_strlen(s1);
+	lens2 = ft_strlen(s2);
+	if (!(str = malloc(sizeof(*str) * (lens1 + lens1 + 1))))
 		return (NULL);
-	while (i < ft_strlen(s1))
+	while (i < lens1)
 	{
 		str[i] = s1[i];
 		i++;
 	}
-	while (i < (ft_strlen(s1) + ft_strlen(s2)))
+	while (i < (lens1 + lens2))
 	{
-		str[i] = s2[i - ft_strlen(s1)];
+		str[i] = s2[i - lens1];
 		i++;
 	}
 	str[i] = 0;
