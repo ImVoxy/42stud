@@ -1,4 +1,16 @@
-#include "get_next_line.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/23 10:14:30 by alpascal          #+#    #+#             */
+/*   Updated: 2019/12/23 10:49:28 by alpascal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line_bonus.h"
 
 int		isnl(char *str, int test)
 {
@@ -19,7 +31,7 @@ int		isnl(char *str, int test)
 	return (i);
 }
 
-char		*ft_substr_no_nl(char *str)
+char	*ft_substr_no_nl(char *str)
 {
 	char *test;
 
@@ -46,11 +58,11 @@ int		get_next_line(int fd, char **line)
 
 	i = 0;
 	r = 1;
-	if (BUFFER_SIZE < 1 || fd < 0 || !line)
-		return (-1);
 	while (!isnl(str[fd], 2) && (r > 0))
 	{
-		r = read(fd, buff, BUFFER_SIZE);
+		if (BUFFER_SIZE < 1 || fd < 0 || !line
+		|| (r = read(fd, buff, BUFFER_SIZE)) < 0)
+			return (-1);
 		buff[r] = 0;
 		tmp = str[fd];
 		str[fd] = ft_strjoin(tmp, buff);

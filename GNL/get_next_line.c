@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:07:44 by alpascal          #+#    #+#             */
-/*   Updated: 2019/12/12 16:48:52 by alpascal         ###   ########.fr       */
+/*   Updated: 2019/12/23 10:49:02 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		isnl(char *str, int test)
 	return (i);
 }
 
-char		*ft_substr_no_nl(char *str)
+char	*ft_substr_no_nl(char *str)
 {
 	char *test;
 
@@ -58,11 +58,11 @@ int		get_next_line(int fd, char **line)
 
 	isok = 0;
 	ret = 1;
-	if (BUFFER_SIZE < 1 || fd < 0 || !line)
-		return (-1);
 	while (!isnl(str, 2) && (ret > 0))
 	{
-		ret = read(fd, buff, BUFFER_SIZE);
+		if (BUFFER_SIZE < 1 || fd < 0 || !line
+		|| (ret = read(fd, buff, BUFFER_SIZE)) < 0)
+			return (-1);
 		buff[ret] = 0;
 		tmp = str;
 		str = ft_strjoin(tmp, buff);
