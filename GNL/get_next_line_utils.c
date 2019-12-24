@@ -79,7 +79,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	while (s[i])
 		i++;
 	if (start > i)
-		return (ft_strdup(""));
+		return (NULL);
 	if (!(str = malloc(sizeof(*str) * (len + 1))))
 		return (NULL);
 	i = 0;
