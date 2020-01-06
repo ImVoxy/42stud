@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 10:14:48 by alpascal          #+#    #+#             */
-/*   Updated: 2019/12/23 10:17:21 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/06 11:40:42 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <limits.h>
 
 int		get_next_line(int fd, char **line);
 int		isnl(char *str, int test);

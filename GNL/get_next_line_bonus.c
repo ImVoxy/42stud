@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 10:14:30 by alpascal          #+#    #+#             */
-/*   Updated: 2019/12/23 10:49:28 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/06 11:40:14 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_substr_no_nl(char *str)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*str[4096];
+	static char	*str[OPEN_MAX];
 	char		buff[BUFFER_SIZE + 1];
 	char		*tmp;
 	int			r;
