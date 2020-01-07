@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:20:04 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/02 13:44:48 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/06 15:22:53 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int				ft_tolower(int c);
 int				ft_toupper(int c);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 int				ft_lstsize(t_list *lst);
+int				ft_putstrn(char *s);
+int				ft_printf(const char *str, ...);
 
 char			*ft_strchr(const char *s, int c);
 char			*ft_strnstr(const char *haystack, const char *needle,
@@ -57,6 +59,7 @@ void			ft_lstadd_back(t_list **alst, t_list *new);
 void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
+void			ft_lstfree(t_list **lst);
 void			*ft_memset(void *b, int c, size_t len);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
@@ -71,6 +74,6 @@ size_t			ft_strlen(const char *str);
 t_list			*ft_lstnew(void *content);
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
-					void (*del)(void *));
+				void (*del)(void *));
 
 #endif

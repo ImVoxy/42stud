@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   format_solver2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/10 10:20:44 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/06 15:45:49 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/07 11:42:53 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/07 13:52:57 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+/*
+void	hexa_solver(char *c, va_list ap)
 {
-	char	*str;
-	size_t	i;
+	char *base;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
-		i++;
-	if (start > i)
-		return (ft_strdup(""));
-	if (!(str = malloc(sizeof(*str) * (len + 1))))
-		return (NULL);
-	i = 0;
-	while (s[start + i] && i < len)
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	str[i] = 0;
-	return (str);
+	base = "0123456789abcdef";
+	c = ft_itoa_base(va_arg(ap, unsigned int), base);
+}
+
+void	hexa_up_solver(char *c, va_list ap)
+{
+	char *base;
+
+	base = "0123456789ABCDEF";
+	c = ft_itoa_base(va_arg(ap, unsigned int), base);
+}
+*/
+
+char	*unsigned_solver(va_list ap)
+{
+	char *c;
+
+	return (c = ft_strdup(ft_itoa(va_arg(ap, unsigned int))));
 }

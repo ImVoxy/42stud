@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 	int c = atoi(argv[3]);
 	unsigned int d = atoi(argv[4]);
 
-	printf ("%c\n", a);
+/*	printf ("%c\n", a);
 	printf ("%s\n", b);
 	printf ("%p\n", b);
 	printf ("%d\n", c);
@@ -31,7 +31,9 @@ int main(int argc, char **argv)
 	printf ("%50s\n", b);
 	printf ("%53.04s\n", b);
 	printf ("??%.s\n", b);
+*/
 
+	printf("!! %*******d !!", 42);
 
 	return (0);
 }

@@ -1,37 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   flag_solver.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/10 10:20:44 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/06 15:45:49 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/07 15:42:57 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/07 15:43:16 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*str;
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	while (s[i])
-		i++;
-	if (start > i)
-		return (ft_strdup(""));
-	if (!(str = malloc(sizeof(*str) * (len + 1))))
-		return (NULL);
-	i = 0;
-	while (s[start + i] && i < len)
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	str[i] = 0;
-	return (str);
-}
+#include "ft_printf.h"
