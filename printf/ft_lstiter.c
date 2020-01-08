@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfree.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/08 10:37:23 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/08 10:37:25 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/08 10:37:33 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/08 10:37:36 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstfree(t_list **lst)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*ind;
-
-	ind = *lst;
-	if (ind)
+	if (f && lst)
 	{
-		while (ind->next)
+		while (lst)
 		{
-			free(ind->content);
-			ind = ind->next;
-			free(*lst);
-			*lst = ind;
+			(*f)(lst->content);
+			lst = lst->next;
 		}
-		free(ind->content);
-		free(ind);
 	}
-	*lst = NULL;
 }

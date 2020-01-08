@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:24:58 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/07 16:04:34 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/08 12:07:37 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,26 @@ int		flag_loop(t_list *list, char *str, char *c, va_list ap)
 {
 	int		i;
 	int		j;
+//	char	**d;
 
 	j = 0;
 	i = 0;
+//	d = flag_mem();
 	while (str[i] == '-' || str[i] == '0' || str[i] == '.' || str[i] == '*')
 		i++;
-	str[i] == 'c' ? (c = (char_solver(ap))) : c;
-	str[i] == 's' ? (c = (string_solver(ap))) : c;
-//	str[i++] == 'p' ? pointer_solver(c, ap) : i--;
-	str[i] == 'd' ? (c = (decimal_solver(ap))) : c;
-	str[i] == 'i' ? (c = (integer_solver(ap))) : c;
+	(str[i] == 'c' || str[i] == 's') ? (c = (string_solver(ap, str[i]))) : c;
+	str[i] == 'p' ? (c = pointer_solver(ap)) : c;
+	(str[i] == 'd' || str[i] == 'i') ? (c = (integer_solver(ap))) : c;
 	str[i] == 'u' ? (c = (unsigned_solver(ap))) : c;
-//	str[i++] == 'x' ? hexa_solver(c, ap) : i--;
-//	str[i++] == 'X' ? hexa_up_solver(c, ap) : i--;
+	(str[i] == 'x' || str[i] == 'X') ? (c = hexa_solver(ap, str[i])) : c;
 	if (str[i] == 'c' || str[i] == 's' || str[i] == 'p' || str[i] == 'd'
 	|| str[i] == 'i' || str[i] == 'u' || str[i] == 'x' || str[i] == 'X')
+//	if (c)
 		i++;
-//	str[j++] == '-' ?  : i--;
-//	str[j++] == '0' ?  : i--;
-//	str[j++] == '.' ?  : i--;
-//	str[j++] == '*' ?  : i--;
+//	str[j++] == '-' ?  : j--;
+//	str[j++] == '0' ?  : j--;
+//	str[j++] == '.' ?  : j--;
+//	str[j++] == '*' ?  : j--;
 	free(str);
 	if (c)
 		ft_lstadd_back(&list, ft_lstnew(c));
@@ -72,9 +72,7 @@ int		get_next_flag(t_list *list, const char *str, int i, va_list ap)
 		ft_lstadd_back(&list, ft_lstnew(f));
 		return (2);
 	}
-//	c = va_arg(ap, char *);
 	j += flag_loop(list, ft_substr(str, i, ft_strlen(str)), c, ap);
-//	ft_lstadd_back(&list, ft_lstnew(c));
 	return (j);
 }
 

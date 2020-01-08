@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfree.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/08 10:37:23 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/08 10:37:25 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/08 10:37:07 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/08 10:37:09 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstfree(t_list **lst)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	t_list	*ind;
-
-	ind = *lst;
-	if (ind)
+	if (lst && del)
 	{
-		while (ind->next)
-		{
-			free(ind->content);
-			ind = ind->next;
-			free(*lst);
-			*lst = ind;
-		}
-		free(ind->content);
-		free(ind);
+		(*del)(lst->content);
+		lst = NULL;
+		free(lst);
 	}
-	*lst = NULL;
 }

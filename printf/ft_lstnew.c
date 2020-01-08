@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfree.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/08 10:37:23 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/08 10:37:25 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/08 10:38:09 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/08 10:38:11 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstfree(t_list **lst)
+t_list	*ft_lstnew(void *content)
 {
-	t_list	*ind;
+	t_list	*new;
 
-	ind = *lst;
-	if (ind)
-	{
-		while (ind->next)
-		{
-			free(ind->content);
-			ind = ind->next;
-			free(*lst);
-			*lst = ind;
-		}
-		free(ind->content);
-		free(ind);
-	}
-	*lst = NULL;
+	if (!(new = malloc(sizeof(t_list))))
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

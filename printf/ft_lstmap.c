@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfree.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/08 10:37:23 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/08 10:37:25 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/08 10:37:59 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/08 10:38:02 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstfree(t_list **lst)
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*ind;
+	t_list	*new;
+	t_list	*start;
 
-	ind = *lst;
-	if (ind)
+	(void)(*del);
+	if (!f || !lst)
+		return (NULL);
+	new = ft_lstnew((*f)(lst->content));
+	start = new;
+	while (lst->next)
 	{
-		while (ind->next)
-		{
-			free(ind->content);
-			ind = ind->next;
-			free(*lst);
-			*lst = ind;
-		}
-		free(ind->content);
-		free(ind);
+		lst = lst->next;
+		new->next = ft_lstnew((*f)(lst->content));
+		new = new->next;
 	}
-	*lst = NULL;
+	return (start);
 }

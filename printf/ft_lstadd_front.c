@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfree.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/08 10:37:23 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/08 10:37:25 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/08 10:36:49 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/08 10:36:51 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstfree(t_list **lst)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	t_list	*ind;
-
-	ind = *lst;
-	if (ind)
+	if (alst && new)
 	{
-		while (ind->next)
-		{
-			free(ind->content);
-			ind = ind->next;
-			free(*lst);
-			*lst = ind;
-		}
-		free(ind->content);
-		free(ind);
+		new->next = *alst;
+		*alst = new;
 	}
-	*lst = NULL;
 }
