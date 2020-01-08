@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 11:31:53 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/08 12:00:50 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/08 14:37:12 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*pointer_solver(va_list ap)
 	char *c;
 
 	base = "0123456789abcdef";
-	return (c = ft_itoa_base(va_arg(ap, unsigned int), base));
+	return (c = ft_itoa_base(va_arg(ap, unsigned long), base, 1));
 }
 
 
@@ -53,7 +53,7 @@ char	*hexa_solver(va_list ap, char b)
 		base = "0123456789abcdef";
 	else
 		base = "0123456789ABCDEF";
-	return (c = ft_itoa_base(va_arg(ap, unsigned int), base));
+	return (c = ft_itoa_base(va_arg(ap, unsigned int), base, 0));
 }
 
 

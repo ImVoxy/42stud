@@ -6,11 +6,11 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 11:15:38 by alpascal          #+#    #+#             */
-/*   Updated: 2019/12/12 16:47:55 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/06 12:00:00 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
 #include <fcntl.h>
 
@@ -35,6 +35,7 @@ void	loop(int fd, int numtest)
 	printf("fin ici\n\n");
 //	if (str)
 	free(str);
+	str = NULL;
 	//ret = get_next_line(fd, &str);
 }
 
@@ -49,7 +50,7 @@ int main()
 	loop (open("tests/long_test_n", O_RDONLY), 7);
 	loop (open("tests/2_long_tests", O_RDONLY), 8);
 	loop (open("tests/homer", O_RDONLY), 9);
-	loop (0, 10);
+	//loop (0, 10);
 
 	printf("*************************************************\n");
 	printf("*************************************************\n\n");

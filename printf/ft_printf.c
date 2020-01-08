@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:24:58 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/08 12:07:37 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/08 15:11:35 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,18 @@ int		flag_loop(t_list *list, char *str, char *c, va_list ap)
 {
 	int		i;
 	int		j;
-//	char	**d;
+	int		*d;
+	int num;
 
+	num = 0;
 	j = 0;
 	i = 0;
-//	d = flag_mem();
 	while (str[i] == '-' || str[i] == '0' || str[i] == '.' || str[i] == '*')
+	{
+		str[i] == '*' ? num++ : num;
 		i++;
+	}
+	d = flag_mem(str, ap, num);
 	(str[i] == 'c' || str[i] == 's') ? (c = (string_solver(ap, str[i]))) : c;
 	str[i] == 'p' ? (c = pointer_solver(ap)) : c;
 	(str[i] == 'd' || str[i] == 'i') ? (c = (integer_solver(ap))) : c;
@@ -48,6 +53,7 @@ int		flag_loop(t_list *list, char *str, char *c, va_list ap)
 	|| str[i] == 'i' || str[i] == 'u' || str[i] == 'x' || str[i] == 'X')
 //	if (c)
 		i++;
+	flag_reader(list, str, d, num);
 //	str[j++] == '-' ?  : j--;
 //	str[j++] == '0' ?  : j--;
 //	str[j++] == '.' ?  : j--;
@@ -88,7 +94,7 @@ t_list	*get_listed(const char *str, va_list ap)
 		j = 0;
 		while (str[i + j] != '%' && str[i + j])
 			j++;
-		if (j)
+//		if (j)
 			ft_lstadd_back(&list, ft_lstnew(ft_substr(str, i, j)));
 		i += j;
 		str[i] ? i += get_next_flag(list, str, i, ap) : i;

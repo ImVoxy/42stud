@@ -6,13 +6,13 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 10:39:22 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/08 12:22:56 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/08 14:39:15 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*reverse_tab(char *str)
+char	*reverse_tab(char *str, int test)
 {
 	int		i;
 	int		j;
@@ -21,6 +21,12 @@ char	*reverse_tab(char *str)
 	i = 0;
 	result = ft_strdup(str);
 	j = ft_strlen(str) - 1;
+	if (test)
+	{
+		result[0] = '0';
+		result[1] = 'x';
+		i = 2;
+	}
 	while (j >= 0)
 	{
 		result[i] = str[j];
@@ -31,12 +37,12 @@ char	*reverse_tab(char *str)
 	return (result);
 }
 
-char	*ft_itoa_base(unsigned int nbr, char *base)
+char	*ft_itoa_base(unsigned long nbr, char *base, int test)
 {
-	char *result;
-	int sign;
-	int i;
-	int base_len;
+	char	*result;
+	int		sign;
+	int		i;
+	int		base_len;
 
 	if (!(result = ft_calloc(sizeof(char), 17)))
 		return (NULL);
@@ -51,6 +57,6 @@ char	*ft_itoa_base(unsigned int nbr, char *base)
 		nbr /= base_len;
 	}
 	result[i] = base[nbr % base_len];
-	sign == -1 ? result[i + 1] = '-' : 0 ;
-	return (reverse_tab(result));
+	sign == -1 ? result[i + 1] = '-' : 0;
+	return (reverse_tab(result, test));
 }

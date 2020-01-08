@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 11:15:38 by alpascal          #+#    #+#             */
-/*   Updated: 2019/12/12 16:47:55 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/06 11:57:57 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int main()
 	loop (open("tests/long_test_n", O_RDONLY), 7);
 	loop (open("tests/2_long_tests", O_RDONLY), 8);
 	loop (open("tests/homer", O_RDONLY), 9);
-	loop (0, 10);
+	//loop (0, 10);
 
 	printf("*************************************************\n");
 	printf("*************************************************\n\n");
