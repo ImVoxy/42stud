@@ -3,6 +3,8 @@
 
 int main(int argc, char **argv)
 {
+	(void)argc;
+	(void)argv;
 //	char a = argv[1][0];
 //	char *b = argv[2];
 //	int c = atoi(argv[3]);
@@ -34,7 +36,7 @@ int main(int argc, char **argv)
 */
 
 
-	printf("||%2d||\n", 1);
+	printf("||%10.005d||\n", 1);
 
 	return (0);
 }

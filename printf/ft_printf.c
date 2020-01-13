@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:24:58 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/08 15:11:35 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:45:46 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,20 @@ int		flag_loop(t_list *list, char *str, char *c, va_list ap)
 	int		i;
 	int		j;
 	int		*d;
-	int		num;
 
-	num = 0;
 	j = 0;
 	i = 0;
-	while (str[i] == '-' || str[i] == '0' || str[i] == '.' || str[i] == '*')
-	{
-		str[i] == '*' ? num++ : num;
-		i++;
-	}
-	d = flag_mem(str, ap, num);
-	(str[i] == 'c' || str[i] == 's') ? (c = (string_solver(ap, str[i]))) : c;
-	str[i] == 'p' ? (c = pointer_solver(ap)) : c;
-	(str[i] == 'd' || str[i] == 'i') ? (c = (integer_solver(ap))) : c;
-	str[i] == 'u' ? (c = (unsigned_solver(ap))) : c;
-	(str[i] == 'x' || str[i] == 'X') ? (c = hexa_solver(ap, str[i])) : c;
+	d = flag_mem(str, ap);
+	(str[i] == 'c' || str[i] == 's') ? (c = (s_solver(ap, str[i], str, d))) : c;
+	str[i] == 'p' ? (c = p_solver(ap, str, d)) : c;
+	(str[i] == 'd' || str[i] == 'i') ? (c = (i_solver(ap, str, d))) : c;
+	str[i] == 'u' ? (c = (u_solver(ap, str, d))) : c;
+	(str[i] == 'x' || str[i] == 'X') ? (c = h_solver(ap, str[i], str, d)) : c;
 	if (str[i] == 'c' || str[i] == 's' || str[i] == 'p' || str[i] == 'd'
 	|| str[i] == 'i' || str[i] == 'u' || str[i] == 'x' || str[i] == 'X')
 //	if (c)
 		i++;
-	flag_reader(list, str, d, num);
-//	str[j++] == '-' ?  : j--;
-//	str[j++] == '0' ?  : j--;
-//	str[j++] == '.' ?  : j--;
-//	str[j++] == '*' ?  : j--;
+	flag_reader(list, str, d);
 	free(str);
 	if (c)
 		ft_lstadd_back(&list, ft_lstnew(c));

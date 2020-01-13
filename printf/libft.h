@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:20:04 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/08 14:50:06 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/13 12:07:41 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_itoa(int n);
 char			**ft_split(char const *s, char c);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char			*ft_itoa_base(unsigned long nbr, char *base, int test);
 
 void			ft_bzero(void *s, size_t n);
 void			ft_putchar_fd(char c, int fd);
