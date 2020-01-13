@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 */
 
 
-	printf("||%10.005d||\n", 1);
+	printf("||%12.3s||\n", "bonjour");
 
 	return (0);
 }

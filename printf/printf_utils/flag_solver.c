@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 15:42:57 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/13 12:45:44 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:21:53 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,33 @@ int		is_minus(char *str)
 
 void	flag_reader(t_list *list, char *str, int *d)
 {
-	int	i;
-	int	len;
+	int		i;
+	int		len;
+	int		len_str;
+	char	*tmp;
 
 	len = 0;
+	len_str = ft_strlen(str);
 	i = 0;
-	while (str[i] && str[i] != ' ')
+	while (str[len] && str[len] != ' ')
 		len++;
+	if (!(is_minus(str)))
+	{
+		while (len >= 0)
+		{
+			tmp = ft_strdup(str);
+			str[len_str] = tmp[len];
+			len_str--;
+			len--;
+		}
+		free(tmp);
+	}
 	while (str[i] == '-' || str[i] == '0' || str[i] == '.' || str[i] == '*'
 		|| ft_isdigit(str[i]))
 	{
-		if (str[i] == '0' && !(is_minus(str)))
+		if (str[i] == '0' && (str!(ft_isdigit(str[i - 1])) && !(is_minus(str)))
 		{
 				;
-		}
-		if (str[i] == '-')
-		{
 		}
 		if (str[i] == '.')
 		{

@@ -6,13 +6,13 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 13:24:58 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/13 12:45:46 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:29:29 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf_utils/ft_printf.h"
 
-int		get_printed(t_list *list)
+int		get_printed(p_list *list)
 {
 	int		i;
 
@@ -28,7 +28,7 @@ int		get_printed(t_list *list)
 	return (i);
 }
 
-int		flag_loop(t_list *list, char *str, char *c, va_list ap)
+int		flag_loop(p_list *list, char *str, char *c, va_list ap)
 {
 	int		i;
 	int		j;
@@ -53,7 +53,7 @@ int		flag_loop(t_list *list, char *str, char *c, va_list ap)
 	return (i);
 }
 
-int		get_next_flag(t_list *list, const char *str, int i, va_list ap)
+int		get_next_flag(p_list *list, const char *str, int i, va_list ap)
 {
 	char	*f;
 	char	*c;
@@ -75,7 +75,7 @@ t_list	*get_listed(const char *str, va_list ap)
 {
 	int		i;
 	int		j;
-	t_list	*list;
+	p_list	*list;
 
 	i = 0;
 	while (str[i])
