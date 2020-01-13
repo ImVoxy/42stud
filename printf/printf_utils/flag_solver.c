@@ -41,8 +41,8 @@ void	flag_reader(t_list *list, char *str, int *d, int num)
 	i = 0;
 	while (str[i] == '-' || str[i] == '0' || str[i] == '.' || str[i] == '*')
 	{
-		str[i++] == '-' ? i += : i--;
-		str[i++] == '0' ? i += : i--;
+		str[i++] == '0' ? a = 1 : i--;
+		str[i++] == '-' ? s = 1 : i--;
 		str[i++] == '.' ? i += : i--;
 	}
 }

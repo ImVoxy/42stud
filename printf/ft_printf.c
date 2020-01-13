@@ -33,7 +33,7 @@ int		flag_loop(t_list *list, char *str, char *c, va_list ap)
 	int		i;
 	int		j;
 	int		*d;
-	int num;
+	int		num;
 
 	num = 0;
 	j = 0;

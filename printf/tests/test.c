@@ -3,10 +3,10 @@
 
 int main(int argc, char **argv)
 {
-	char a = argv[1][0];
-	char *b = argv[2];
-	int c = atoi(argv[3]);
-	unsigned int d = atoi(argv[4]);
+//	char a = argv[1][0];
+//	char *b = argv[2];
+//	int c = atoi(argv[3]);
+//	unsigned int d = atoi(argv[4]);
 
 /*	printf ("%c\n", a);
 	printf ("%s\n", b);
@@ -33,7 +33,8 @@ int main(int argc, char **argv)
 	printf ("??%.s\n", b);
 */
 
-	printf("!! %*******d !!", 42);
+
+	printf("||%2d||\n", 1);
 
 	return (0);
 }
