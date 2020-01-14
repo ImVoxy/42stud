@@ -6,13 +6,13 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:14:04 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/13 12:07:13 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:50:29 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*reverse_tab(char *str, int test)
+char	*ft_reverse_tab(char *str, int test)
 {
 	int		i;
 	int		j;
@@ -34,7 +34,7 @@ char	*reverse_tab(char *str, int test)
 		i++;
 		j--;
 	}
-	free(str);
+//	free(str);
 	return (result);
 }
 
@@ -59,5 +59,5 @@ char	*ft_itoa_base(unsigned long nbr, char *base, int test, int len)
 	}
 	result[i] = base[nbr % base_len];
 	sign == -1 ? result[i + 1] = '-' : 0;
-	return (reverse_tab(result, test));
+	return (ft_reverse_tab(result, test));
 }

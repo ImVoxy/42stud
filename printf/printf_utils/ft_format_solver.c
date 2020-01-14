@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_solver.c                                    :+:      :+:    :+:   */
+/*   ft_format_solver.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 11:31:53 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/13 12:01:36 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/14 14:09:52 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/14 14:16:37 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*s_solver(va_list ap, char b, char *str, int *d)
+char	*ft_s_sol(va_list ap, char b, char *str, int *d)
 {
 	char	*c;
 	int		len;
 
-	len = get_len(str, b, d);
+	len = ft_get_len(str, b, d);
 	if (b == 's')
 		return (c = ft_strdupl(va_arg(ap, char *), len));
 	if (!(c = ft_calloc(1, len + 1)))
@@ -28,35 +28,35 @@ char	*s_solver(va_list ap, char b, char *str, int *d)
 }
 
 
-char	*p_solver(va_list ap, char *str, int *d)
+char	*ft_p_sol(va_list ap, char *str, int *d)
 {
 	char	*base;
 	char	*c;
 	int		len;
 
-	len = get_len(str, 'p', d);
+	len = ft_get_len(str, 'p', d);
 	base = "0123456789abcdef";
-	return (c = ft_itoa_base(va_arg(ap, unsigned long), base, 1, len));
+	return (c = ft_itoa_base(va_arg(ap, unsigned int), base, 1, len));
 }
 
 
-char	*i_solver(va_list ap, char *str, int *d)
+char	*ft_i_sol(va_list ap, char *str, int *d)
 {
 	char	*c;
 	int		len;
 
-	len = get_len(str, 'i', d);
+	len = ft_get_len(str, 'i', d);
 	return (c = ft_strdupl(ft_itoa(va_arg(ap, int)), len));
 }
 
 
-char	*h_solver(va_list ap, char b, char *str, int *d)
+char	*ft_h_sol(va_list ap, char b, char *str, int *d)
 {
-	char	*base;
-	char	*c;
-	int		len;
+	char		*base;
+	char		*c;
+	int			len;
 
-	len = get_len(str, b, d);
+	len = ft_get_len(str, b, d);
 	if (b == 'x')
 		base = "0123456789abcdef";
 	else
@@ -65,11 +65,11 @@ char	*h_solver(va_list ap, char b, char *str, int *d)
 }
 
 
-char	*u_solver(va_list ap, char *str, int *d)
+char	*ft_u_sol(va_list ap, char *str, int *d)
 {
 	char	*c;
 	int		len;
 
-	len = get_len(str, 'u', d);
+	len = ft_get_len(str, 'u', d);
 	return (c = ft_strdupl(ft_itoa(va_arg(ap, unsigned int)), len));
 }

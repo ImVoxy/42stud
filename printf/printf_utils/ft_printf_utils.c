@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/14 10:17:19 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/14 15:08:05 by alpascal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -22,30 +33,31 @@ char	*ft_strdupl(const char *s1, int len)
 	cpy[i] = '\0';
 	return (cpy);
 }
-
-int		get_len(char *str, char c, int *mem)
+int		ft_get_len(char *str, char c, int *mem)
 {
-	int len;
+	int len[2];
 	int nb;
+	int i;
 
-	len = 0;
+	len[0] = 0;
+	len[1] = 0;
+	i = 0;
 	nb = 0;
-	while (*str && *str != c && nb <= 1)
+	while (*str && *str != c && nb <= 1 && i <= 1)
 	{
 		if (*str >= '1' && *str <= '9')
 		{
-			len += ft_atoi(str);
+			len[i++] = ft_atoi(str);
 			while (*str >= '0' && *str <= '9')
 				str++;
-			str--;
-			nb++;
 		}
 		else if (*str == '*')
 		{
-			len += mem[nb];
+			len[i++] = mem[nb];
 			nb++;
 		}
 		str++;
 	}
-	return (len);
+	len[1] > len[0] ? len[0] = len[1] : 1;
+	return (len[0]);
 }

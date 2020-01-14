@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "../libft.h"
 
 int main(int argc, char **argv)
 {
@@ -36,7 +37,8 @@ int main(int argc, char **argv)
 */
 
 
-	printf("||%12.3s||\n", "bonjour");
+	printf("||%10.10x||\n", 500000);
+
 
 	return (0);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag_solver.c                                      :+:      :+:    :+:   */
+/*   ft_flag_solver.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 15:42:57 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/13 15:21:53 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/14 14:09:44 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/14 14:41:39 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		*flag_mem(char *str, va_list ap)
+int		*ft_flag_mem(char *str, va_list ap)
 {
 	int i;
 	int ind;
@@ -34,7 +34,7 @@ int		*flag_mem(char *str, va_list ap)
 	}
 	return (mem);
 }
-
+/*
 int		is_minus(char *str)
 {
 	int i;
@@ -49,39 +49,61 @@ int		is_minus(char *str)
 		}
 		return (0);
 }
-
-void	flag_reader(t_list *list, char *str, int *d)
+*/
+void	ft_flag_reader(p_list *list, char *str, int *d)
 {
 	int		i;
-	int		len;
-	int		len_str;
-	char	*tmp;
+	int nb;
 
-	len = 0;
-	len_str = ft_strlen(str);
+	nb = 0;
 	i = 0;
-	while (str[len] && str[len] != ' ')
-		len++;
-	if (!(is_minus(str)))
+	while (list->next)
+		list = list->next;
+	str[i++] = '0' ? list->flag = '0' : i--;
+	str[i++] = '-' ? list->flag = '-' : i--;
+	while (ft_isdigit(str[i]) || str[i] == '*')
 	{
-		while (len >= 0)
-		{
-			tmp = ft_strdup(str);
-			str[len_str] = tmp[len];
-			len_str--;
-			len--;
-		}
-		free(tmp);
+		if (str[i] == '*')
+			nb = 1;
+		i++;
 	}
-	while (str[i] == '-' || str[i] == '0' || str[i] == '.' || str[i] == '*'
-		|| ft_isdigit(str[i]))
+	if (str[i] == '*')
 	{
-		if (str[i] == '0' && (str!(ft_isdigit(str[i - 1])) && !(is_minus(str)))
-		{
-				;
-		}
-		if (str[i] == '.')
-		{
-		}
+		list->len = d[nb];
+		i++;
 	}
+	if (ft_isdigit(str[i]))
+		list->len = ft_atoi(&(str[i]));
+	while (ft_isdigit(str[i]))
+		i++;
+	list->type = str[i];
 }
+
+void	ft_ready_to_print(p_list *list)
+{
+/*	while (list->next)
+		list = list->next;
+	if (list->flag != '-')
+		ft_minus_str(list->content, list->type, list->len);
+	{
+	}
+*/}
+
+/*void	ft_minus_str(char *str, char type, int len_str)
+{
+	int len;
+	char *tmp;
+
+	len = ft_strlen(str);
+	while (len >= 0 && len_str >= 0)
+	{
+		tmp = ft_strdup(str);
+		str[len_str] = tmp[len];
+		len_str--;
+		len--;
+	}
+	while len
+	while (len < len_str)
+		str[len++] = ' ';
+	free(tmp);
+}*/
