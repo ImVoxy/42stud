@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_main.c                                      :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/06 15:15:17 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/15 09:46:55 by alpascal         ###   ########.fr       */
+/*   Created: 2019/11/04 12:22:18 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/15 12:02:31 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf_utils/ft_printf.h"
-#include <stdio.h>
+#include "../ft_printf.h"
 
-int main(int argc, char **argv)
+int	ft_isdigit(int c)
 {
-	int i = 45;
-	char c = 'n';
-	int *p;
-	unsigned int j = 245;
-	printf("%3s\n", "bonjour");
-	ft_printf("%3p\n", "bonjour");
-//	printf(" --- %d ---\n", ft_printf("%p", i));
-	return (0);
+	if (c < '0' || c > '9')
+		return (0);
+	return (1);
 }

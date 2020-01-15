@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:14:04 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/14 14:50:29 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/15 09:32:40 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,12 @@ char	*ft_reverse_tab(char *str, int test)
 char	*ft_itoa_base(unsigned long nbr, char *base, int test, int len)
 {
 	char	*result;
-	int		sign;
 	int		i;
 	int		base_len;
 
 	if (!(result = ft_calloc(sizeof(char), len + 1)))
 		return (NULL);
 	i = 0;
-	sign = 1;
-	nbr < 0 ? sign = -1 : sign;
 	base_len = ft_strlen(base);
 	while (nbr / base_len)
 	{
@@ -58,6 +55,5 @@ char	*ft_itoa_base(unsigned long nbr, char *base, int test, int len)
 		nbr /= base_len;
 	}
 	result[i] = base[nbr % base_len];
-	sign == -1 ? result[i + 1] = '-' : 0;
 	return (ft_reverse_tab(result, test));
 }

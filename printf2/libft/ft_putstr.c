@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_main.c                                      :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/06 15:15:17 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/15 09:46:55 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/15 14:16:15 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/15 14:16:16 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf_utils/ft_printf.h"
-#include <stdio.h>
+#include "../ft_printf.h"
 
-int main(int argc, char **argv)
+void	ft_putstr(char *s)
 {
-	int i = 45;
-	char c = 'n';
-	int *p;
-	unsigned int j = 245;
-	printf("%3s\n", "bonjour");
-	ft_printf("%3p\n", "bonjour");
-//	printf(" --- %d ---\n", ft_printf("%p", i));
-	return (0);
+	unsigned int	i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+		{
+			write(1, &s[i], 1);
+			i++;
+		}
+	}
 }

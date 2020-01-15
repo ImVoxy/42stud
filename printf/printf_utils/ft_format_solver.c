@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 14:09:52 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/14 14:16:37 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/15 09:28:42 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_p_sol(va_list ap, char *str, int *d)
 
 	len = ft_get_len(str, 'p', d);
 	base = "0123456789abcdef";
-	return (c = ft_itoa_base(va_arg(ap, unsigned int), base, 1, len));
+	return (c = ft_itoa_base(va_arg(ap, unsigned int), base, 1, len + 2));
 }
 
 

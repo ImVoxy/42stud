@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_main.c                                      :+:      :+:    :+:   */
+/*   ft_print_type2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/06 15:15:17 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/15 09:46:55 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/15 13:25:56 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/15 13:27:38 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf_utils/ft_printf.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
-int main(int argc, char **argv)
+int	ft_p_type(t_list list, unsigned int nb)
 {
-	int i = 45;
-	char c = 'n';
-	int *p;
-	unsigned int j = 245;
-	printf("%3s\n", "bonjour");
-	ft_printf("%3p\n", "bonjour");
-//	printf(" --- %d ---\n", ft_printf("%p", i));
-	return (0);
+}
+
+int	ft_u_type(t_list list, unsigned int nb)
+{
+}
+
+int	ft_x_type(t_list list, unsigned int nb)
+{
+}
+
+int	ft_X_type(t_list list, unsigned int nb)
+{
 }

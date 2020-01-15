@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_main.c                                      :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/06 15:15:17 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/15 09:46:55 by alpascal         ###   ########.fr       */
+/*   Created: 2019/11/04 12:38:44 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/15 14:38:51 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf_utils/ft_printf.h"
-#include <stdio.h>
+#include "../ft_printf.h"
 
-int main(int argc, char **argv)
+int	ft_atoi(const char **str)
 {
-	int i = 45;
-	char c = 'n';
-	int *p;
-	unsigned int j = 245;
-	printf("%3s\n", "bonjour");
-	ft_printf("%3p\n", "bonjour");
-//	printf(" --- %d ---\n", ft_printf("%p", i));
-	return (0);
+	int					val;
+
+	val = 0;
+	while (**str >= '0' && **str <= '9')
+	{
+		val = val * 10 + **str - '0';
+		*str += 1;
+	}
+	return (val);
 }

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_main.c                                      :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/06 15:15:17 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/15 09:46:55 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/15 10:17:52 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/15 15:23:38 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf_utils/ft_printf.h"
 #include <stdio.h>
+#include "../ft_printf.h"
 
-int main(int argc, char **argv)
+int main(int ac, char **av)
 {
-	int i = 45;
-	char c = 'n';
-	int *p;
-	unsigned int j = 245;
-	printf("%3s\n", "bonjour");
-	ft_printf("%3p\n", "bonjour");
-//	printf(" --- %d ---\n", ft_printf("%p", i));
+	printf("%d\n", printf("||%-2c %c %c||", '5', 'd', 'd'));
+	printf("%d\n", ft_printf("||%-2c %c %c||", '5', 'd', 'd'));
 	return (0);
 }
