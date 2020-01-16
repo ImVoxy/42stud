@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 09:50:32 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/15 14:48:49 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:34:11 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ int		ft_is_in(char c)
 
 void	ft_init_list(t_list *list)
 {
-	list->str = NULL;
 	list->type = '0';
 	list->flag = '+';
-	list->len = 0;
-	list->pre = 0;
+	list->len = -1;
+	list->pre = -1;
 }
 
 t_list	ft_get_listed(va_list ap, const char **str)
@@ -49,6 +48,7 @@ t_list	ft_get_listed(va_list ap, const char **str)
 	}
 	if (**str == '.')
 	{
+		list.pre = 0;
 		if (ft_isdigit(*(++*str)))
 			list.pre = ft_atoi(str);
 		else if (**str == '*')
@@ -64,7 +64,7 @@ t_list	ft_get_listed(va_list ap, const char **str)
 	}
 	return (list);
 }
-
+#include<stdio.h>
 int		ft_print_it(va_list ap, const char **str)
 {
 	int		len;
@@ -72,14 +72,14 @@ int		ft_print_it(va_list ap, const char **str)
 
 	len = 0;
 	list = ft_get_listed(ap, str);
-	list.type = 'c' ? len += ft_c_type(list, va_arg(ap, int)) : 1;
-/*	list.type = 's' ? len += ft_s_type(list, va_arg(ap, char *)) : 1;
-	list.type = 'p' ? len += ft_p_type(list, va_arg(ap, unsigned int)) : 1;
-	list.type = 'd' ? len += ft_d_type(list, va_arg(ap, int)) : 1;
-	list.type = 'i' ? len += ft_i_type(list, va_arg(ap, int)) : 1;
-	list.type = 'u' ? len += ft_u_type(list, va_arg(ap, unsigned int)) : 1;
-	list.type = 'x' ? len += ft_x_type(list, va_arg(ap, unsigned int)) : 1;
-	list.type = 'X' ? len += ft_X_type(list, va_arg(ap, unsigned int)) : 1;
+	list.type == 'c' ? len += ft_c_type(list, va_arg(ap, int)) : 1;
+	list.type == 's' ? len += ft_s_type(list, va_arg(ap, char *)) : 1;
+//	list.type == 'p' ? len += ft_p_type(list, va_arg(ap, unsigned int)) : 1;
+	list.type == 'd' ? len += ft_d_type(list, ft_itoal(va_arg(ap, int))) : 1;
+	list.type == 'i' ? len += ft_i_type(list, ft_itoal(va_arg(ap, int))) : 1;
+/*	list.type == 'u' ? len += ft_u_type(list, va_arg(ap, unsigned int)) : 1;
+	list.type == 'x' ? len += ft_x_type(list, va_arg(ap, unsigned int)) : 1;
+	list.type == 'X' ? len += ft_X_type(list, va_arg(ap, unsigned int)) : 1;
 */	return (len);
 }
 

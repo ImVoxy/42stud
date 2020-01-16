@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:05:43 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/15 14:15:59 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:22:54 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 typedef struct	s_list
 {
-	char			*str;
 	char			type;
 	char			flag;
 	int				len;
@@ -38,11 +37,13 @@ int				ft_x_type(t_list list, unsigned int nb);
 int				ft_X_type(t_list list, unsigned int nb);
 int				ft_c_type(t_list list, char c);
 int				ft_s_type(t_list list, char *str);
-int				ft_d_type(t_list list, int nb);
-int				ft_i_type(t_list list, int nb);
+int				ft_d_type(t_list list, char *nb);
+int				ft_i_type(t_list list, char *nb);
 
 void			ft_init_list(t_list *list);
 void			ft_putstr(char *s);
+
+size_t			ft_strlen(const char *str);
 
 t_list			ft_get_listed(va_list ap, const char **str);
 
