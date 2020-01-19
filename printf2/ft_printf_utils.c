@@ -12,3 +12,16 @@
 
 #include "ft_printf.h"
 
+int	ft_get_len_d(int n, t_list list)
+{
+	int	i;
+
+	i = 0;
+	n < 0 ? i++ : i;
+	while (n /= 10)
+		i++;
+	i++;
+	list.len > i ? i = list.len : i;
+	list.pre > i ? i = list.pre : i;
+	return (i);
+}

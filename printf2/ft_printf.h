@@ -39,6 +39,10 @@ int				ft_c_type(t_list list, char c);
 int				ft_s_type(t_list list, char *str);
 int				ft_d_type(t_list list, char *nb);
 int				ft_i_type(t_list list, char *nb);
+int				ft_get_len_d(int n, t_list list);
+
+char			*ft_callocs(size_t count, size_t size);
+char			*ft_itoal(int n, t_list list);
 
 void			ft_init_list(t_list *list);
 void			ft_putstr(char *s);

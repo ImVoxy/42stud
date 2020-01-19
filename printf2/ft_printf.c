@@ -64,7 +64,7 @@ t_list	ft_get_listed(va_list ap, const char **str)
 	}
 	return (list);
 }
-#include<stdio.h>
+
 int		ft_print_it(va_list ap, const char **str)
 {
 	int		len;
@@ -75,8 +75,8 @@ int		ft_print_it(va_list ap, const char **str)
 	list.type == 'c' ? len += ft_c_type(list, va_arg(ap, int)) : 1;
 	list.type == 's' ? len += ft_s_type(list, va_arg(ap, char *)) : 1;
 //	list.type == 'p' ? len += ft_p_type(list, va_arg(ap, unsigned int)) : 1;
-	list.type == 'd' ? len += ft_d_type(list, ft_itoal(va_arg(ap, int))) : 1;
-	list.type == 'i' ? len += ft_i_type(list, ft_itoal(va_arg(ap, int))) : 1;
+	list.type == 'd' ? len += ft_d_type(list, ft_itoal(va_arg(ap, int), list)) : 1;
+	list.type == 'i' ? len += ft_i_type(list, ft_itoal(va_arg(ap, int), list)) : 1;
 /*	list.type == 'u' ? len += ft_u_type(list, va_arg(ap, unsigned int)) : 1;
 	list.type == 'x' ? len += ft_x_type(list, va_arg(ap, unsigned int)) : 1;
 	list.type == 'X' ? len += ft_X_type(list, va_arg(ap, unsigned int)) : 1;

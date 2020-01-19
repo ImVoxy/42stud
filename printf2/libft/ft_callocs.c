@@ -21,7 +21,7 @@ char	*ft_callocs(size_t count, size_t size)
 	if (!(tab = malloc(size * count)))
 		return (NULL);
 	while (i < count - 1)
-		tab[i] = ' ';
+		tab[i++] = ' ';
 	tab[i] = 0;
 	return (tab);
 }

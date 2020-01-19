@@ -21,15 +21,13 @@ static void		letri(char *a, int i)
 
 	j = 0;
 	if (a[0] == '-')
-		j = 1;
-	k = i / 2;
-	while (i > k)
+		j++;
+	k = (i + j) / 2;
+	while (i >= k)
 	{
 		c = a[i];
-		a[i] = a[j];
-		a[j] = c;
-		i--;
-		j++;
+		a[i--] = a[j];
+		a[j++] = c;
 	}
 }
 
@@ -42,33 +40,17 @@ static int		ft_abs(int n)
 		r *= -1;
 	return (r);
 }
-
-static long int	ft_pow(int i)
-{
-	long int val;
-
-	val = 1;
-	while (i)
-	{
-		val *= 10;
-		i--;
-	}
-	return (val);
-}
-
-char			*ft_itoal(int n)
+char			*ft_itoal(int n, t_list list)
 {
 	int		i;
 	int		size;
 	char	*a;
 
-	size = 1;
+	size = ft_get_len_d(n, list);
 	i = 0;
-	while (n / ft_pow(size))
-		size++;
 	if (n < 0)
 		i = 1;
-	if (!(a = ft_callocs(size + 1 + i, sizeof(char))))
+	if (!(a = ft_callocs(size + 1, sizeof(char))))
 		return (NULL);
 	if (i == 1)
 		a[0] = '-';
@@ -78,7 +60,10 @@ char			*ft_itoal(int n)
 		i++;
 		n /= 10;
 	}
-	a[i] = ft_abs(n % 10) + 48;
-	letri(a, i);
+	a[i++] = ft_abs(n % 10) + 48;
+	list.flag == '0' ? list.pre = size : 1;
+	while (((a[0] == '-' && list.pre > list.len) ? (i - 1) : i) < list.pre)
+			a[i++] = '0';
+	letri(a, i - 1);
 	return (a);
 }

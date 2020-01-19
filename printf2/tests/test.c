@@ -15,8 +15,9 @@
 
 int main(int ac, char **av)
 {
-	printf("%d\n", printf("||%.d||\n", 123456));
-	printf("%d\n", printf("||%.i||\n", 123456));
-//	printf("%d\n", ft_printf("|| test test %20s||\n", "bonjour"));
+	printf("%d\n", printf("||%.10d||\n", -123456));
+	printf("%d\n\n", printf("||%.10i||\n", -123456));
+	printf("%d\n", ft_printf("||%.10d||\n", -123456));
+	printf("%d\n", ft_printf("||%.10i||\n", -123456));
 	return (0);
 }

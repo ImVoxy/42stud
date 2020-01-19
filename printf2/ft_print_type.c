@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	ft_c_type(t_list list, char c)
 {
@@ -60,19 +61,29 @@ int	ft_s_type(t_list list, char *str)
 	return (len);
 }
 
-int	ft_d_type(t_list list, char *nb)
+int	ft_d_type(t_list list, char *tp)
 {
-	char	*tp;
 	int		len;
 	int		start;
 	int		i;
 	char	s;
 
-	if (!(tp = malloc((len + 1) * sizeof(char))))
-		return (-1);
-	while (start < len)
-		tp[start++] = ' ';
-	tp[start] = '\0';
+	len = ft_strlen(tp);
+	i = len - 1;
+	start = 0;
+	while (tp[start] && tp[start] != ' ')
+		start++;
+	start > 0 ? start -- : 1;
+	if (list.flag == '+')
+	{
+		while (start >= 0 && i >= 0)
+			tp[i--] = tp[start--];
+		while (i >= 0)
+			tp[i--] = ' ';
+	}
+	ft_putstr(tp);
+	free(tp);
+	return (len);
 }
 
 int	ft_i_type(t_list list, char *nb)
