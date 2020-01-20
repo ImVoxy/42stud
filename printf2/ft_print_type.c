@@ -6,12 +6,11 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:20:51 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/16 15:26:46 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/20 10:30:41 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_c_type(t_list list, char c)
 {

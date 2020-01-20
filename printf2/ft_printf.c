@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 09:50:32 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/16 15:34:11 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/20 11:44:15 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,20 @@ t_list	ft_get_listed(va_list ap, const char **str)
 
 int		ft_print_it(va_list ap, const char **str)
 {
-	int		len;
+	int		l;
 	t_list	list;
 
-	len = 0;
+	l = 0;
 	list = ft_get_listed(ap, str);
-	list.type == 'c' ? len += ft_c_type(list, va_arg(ap, int)) : 1;
-	list.type == 's' ? len += ft_s_type(list, va_arg(ap, char *)) : 1;
-//	list.type == 'p' ? len += ft_p_type(list, va_arg(ap, unsigned int)) : 1;
-	list.type == 'd' ? len += ft_d_type(list, ft_itoal(va_arg(ap, int), list)) : 1;
-	list.type == 'i' ? len += ft_i_type(list, ft_itoal(va_arg(ap, int), list)) : 1;
-/*	list.type == 'u' ? len += ft_u_type(list, va_arg(ap, unsigned int)) : 1;
-	list.type == 'x' ? len += ft_x_type(list, va_arg(ap, unsigned int)) : 1;
-	list.type == 'X' ? len += ft_X_type(list, va_arg(ap, unsigned int)) : 1;
-*/	return (len);
+	list.type == 'c' ? l += ft_c_type(list, va_arg(ap, int)) : 1;
+	list.type == 's' ? l += ft_s_type(list, va_arg(ap, char *)) : 1;
+	list.type == 'p' ? l += ft_p_type(list, va_arg(ap, unsigned long)) : 1;
+	list.type == 'd' ? l += ft_d_type(list, ft_itoal(va_arg(ap, int), list)) : 1;
+	list.type == 'i' ? l += ft_i_type(list, ft_itoal(va_arg(ap, int), list)) : 1;
+	list.type == 'u' ? l += ft_u_type(list, ft_itoal(va_arg(ap, unsigned int), list)) : 1;
+/*	list.type == 'x' ? l += ft_x_type(list, va_arg(ap, unsigned int)) : 1;
+	list.type == 'X' ? l += ft_X_type(list, va_arg(ap, unsigned int)) : 1;
+*/	return (l);
 }
 
 int		ft_printf(const char *str, ...)

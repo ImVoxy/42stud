@@ -6,23 +6,23 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 15:33:51 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/16 15:36:04 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/20 11:41:23 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../ft_printf.h"
 
-static void		letri(char *a, int i)
+static void		letri(char *a, long int i)
 {
 	int		j;
 	int		k;
 	char	c;
 
 	j = 0;
-	if (a[0] == '-')
+	if (a[0] == '-' /* || (a[0] != '-' && !(i % 2))*/)
 		j++;
-	k = (i + j) / 2;
+	k = ((i + 1) + j) / 2;
 	while (i >= k)
 	{
 		c = a[i];
@@ -40,13 +40,13 @@ static int		ft_abs(int n)
 		r *= -1;
 	return (r);
 }
-char			*ft_itoal(int n, t_list list)
+char			*ft_itoal(long int n, t_list list)
 {
 	int		i;
 	int		size;
 	char	*a;
 
-	size = ft_get_len_d(n, list);
+	size = ft_get_len_d(n, list, 10);
 	i = 0;
 	if (n < 0)
 		i = 1;
@@ -62,7 +62,7 @@ char			*ft_itoal(int n, t_list list)
 	}
 	a[i++] = ft_abs(n % 10) + 48;
 	list.flag == '0' ? list.pre = size : 1;
-	while (((a[0] == '-' && list.pre > list.len) ? (i - 1) : i) < list.pre)
+	while (((a[0] == '-') ? i - 1 : i) < list.pre)
 			a[i++] = '0';
 	letri(a, i - 1);
 	return (a);

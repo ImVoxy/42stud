@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/15 11:38:08 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/20 10:28:20 by alpascal         ###   ########.fr       */
+/*   Created: 2019/11/10 09:33:54 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/20 10:34:12 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int	ft_get_len_d(int n, t_list list, int base)
+char	*ft_strdup(const char *s1)
 {
-	int	i;
+	int		i;
+	char	*cpy;
 
 	i = 0;
-	n < 0 ? i++ : i;
-	while (n /= base)
+	if (!(cpy = (char *)ft_callocs(ft_strlen(s1) + 1, sizeof(char))))
+		return (NULL);
+	while (s1[i])
+	{
+		cpy[i] = s1[i];
 		i++;
-	i++;
-	list.len > i ? i = list.len : i;
-	list.pre > i ? i = list.pre : i;
-	return (i);
+	}
+	cpy[i] = '\0';
+	return (cpy);
 }
