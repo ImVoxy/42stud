@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:05:43 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/20 12:12:14 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/21 11:43:57 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ int				ft_s_type(t_list list, char *str);
 int				ft_d_type(t_list list, char *nb);
 int				ft_i_type(t_list list, char *nb);
 int				ft_get_len_d(int n, t_list list, int base);
+int				ft_get_len_h(unsigned int n, t_list list, int base);
 
 char			*ft_callocs(size_t count, size_t size);
 char			*ft_itoal(long int n, t_list list);
 char			*ft_strdup(const char *s1);
-char			*ft_itoa_base(long nbr, char *base, int test, int len);
+char			*ft_itoa_base(long nbr, int test, int len, int j);
 
 void			ft_init_list(t_list *list);
 void			ft_putstr(char *s);
