@@ -44,8 +44,50 @@ int	ft_u_type(t_list list, char *nb)
 
 int	ft_x_type(t_list list, unsigned int nb)
 {
+	char	*tp;
+	char	*base;
+	int		len;
+	int		i;
+
+	i = 13;
+	base = "0123456789abcdef";
+	len = 12;
+	list.len > 12 ? len = list.len : 1;
+	tp = ft_itoa_base(nb, base, 0, len);
+	len = ft_strlen(tp);
+	if (list.flag != '-' && len > 14)
+		while(i >= 0)
+		{
+			tp[len + ((i - 1) - 13)] = tp[i];
+			tp[i] = ' ';
+			i--;
+		}
+	ft_putstr(tp);
+	free(tp);
+	return (len);
 }
 
 int	ft_X_type(t_list list, unsigned int nb)
 {
+	char	*tp;
+	char	*base;
+	int		len;
+	int		i;
+
+	i = 13;
+	base = "0123456789ABCDEF";
+	len = 12;
+	list.len > 12 ? len = list.len : 1;
+	tp = ft_itoa_base(nb, base, 0, len);
+	len = ft_strlen(tp);
+	if (list.flag != '-' && len > 14)
+		while(i >= 0)
+		{
+			tp[len + ((i - 1) - 13)] = tp[i];
+			tp[i] = ' ';
+			i--;
+		}
+	ft_putstr(tp);
+	free(tp);
+	return (len);
 }

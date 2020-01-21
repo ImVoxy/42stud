@@ -20,7 +20,7 @@ static void		letri(char *a, long int i)
 	char	c;
 
 	j = 0;
-	if (a[0] == '-' /* || (a[0] != '-' && !(i % 2))*/)
+	if (a[0] == '-')
 		j++;
 	k = ((i + 1) + j) / 2;
 	while (i >= k)

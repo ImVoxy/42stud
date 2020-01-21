@@ -12,6 +12,16 @@
 
 #include "../ft_printf.h"
 
+int		ft_len_hex(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] && str[i] != ' ')
+		i++;
+	return (i);
+}
+
 char	*ft_reverse_tab(char *str, int test)
 {
 	int		i;
@@ -27,6 +37,8 @@ char	*ft_reverse_tab(char *str, int test)
 		result[1] = 'x';
 		i = 2;
 	}
+	else
+		j = ft_len_hex(str + 1);
 	while (j >= 0)
 	{
 		result[i] = str[j];

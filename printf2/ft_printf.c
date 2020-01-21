@@ -78,9 +78,9 @@ int		ft_print_it(va_list ap, const char **str)
 	list.type == 'd' ? l += ft_d_type(list, ft_itoal(va_arg(ap, int), list)) : 1;
 	list.type == 'i' ? l += ft_i_type(list, ft_itoal(va_arg(ap, int), list)) : 1;
 	list.type == 'u' ? l += ft_u_type(list, ft_itoal(va_arg(ap, unsigned int), list)) : 1;
-/*	list.type == 'x' ? l += ft_x_type(list, va_arg(ap, unsigned int)) : 1;
+	list.type == 'x' ? l += ft_x_type(list, va_arg(ap, unsigned int)) : 1;
 	list.type == 'X' ? l += ft_X_type(list, va_arg(ap, unsigned int)) : 1;
-*/	return (l);
+	return (l);
 }
 
 int		ft_printf(const char *str, ...)

@@ -17,7 +17,7 @@ int main(int ac, char **av)
 {
 	unsigned int	i = 546543321;
 
-	printf("%d\n", printf("||%.20u||\n", i));
-	printf("%d\n", ft_printf("||%.20u||\n", i));
+	printf("%d\n", printf("||%50.20x||\n", i));
+	printf("%d\n", ft_printf("||%50.20x||\n", i));
 	return (0);
 }
