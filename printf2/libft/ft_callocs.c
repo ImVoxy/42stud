@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 15:31:57 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/16 15:33:34 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/22 11:54:34 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_callocs(size_t count, size_t size)
 {
 	char	*tab;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	if (!(tab = malloc(size * count)))

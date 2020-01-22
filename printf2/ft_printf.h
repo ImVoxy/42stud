@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:05:43 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/21 11:43:57 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/22 14:59:10 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ typedef struct	s_list
 
 }				t_list;
 
+int				ft_abs(int c);
+int				ft_null(char *str, t_list list);
+int				ft_toupper(int c);
 int				ft_printf(const char *str, ...);
 int				ft_print_it(va_list ap, const char **str);
 int				ft_is_in(char c);
@@ -48,7 +51,7 @@ char			*ft_strdup(const char *s1);
 char			*ft_itoa_base(long nbr, int test, int len, int j);
 
 void			ft_init_list(t_list *list);
-void			ft_putstr(char *s);
+void			ft_putstr(char *s, int len);
 
 size_t			ft_strlen(const char *str);
 

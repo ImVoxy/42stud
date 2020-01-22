@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:25:56 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/21 12:29:34 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/22 14:49:53 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	ft_p_type(t_list list, unsigned long nb)
 			tp[i] = ' ';
 			i--;
 		}
-	ft_putstr(tp);
+	i = 0;
+	ft_putstr(tp, len);
 	free(tp);
 	return (len);
 }
@@ -47,14 +48,14 @@ int	ft_x_type(t_list list, unsigned int nb)
 	int		i;
 	int		j;
 
-	i = ft_get_len_h(nb, list, 16) + 1;
-	j = i;
-	len = ft_get_len_h(nb, list, 16) ;
+	i = ft_get_len_h(nb, list, 16);
+	len = i;
 	list.len > len ? len = list.len : 1;
-	tp = ft_itoa_base(nb, 0, len, j);
+	tp = ft_itoa_base(nb, 0, len, i + 1);
 	len = ft_strlen(tp);
-	j = len;
-	if (list.flag != '-' && len > 14)
+	j = len - 1;
+	i -= 1;
+	if (list.flag != '-' && j > i)
 		while(i >= 0)
 		{
 			tp[j] = tp[i];
@@ -62,7 +63,7 @@ int	ft_x_type(t_list list, unsigned int nb)
 			i--;
 			j--;
 		}
-	ft_putstr(tp);
+	ft_putstr(tp, len);
 	free(tp);
 	return (len);
 }
@@ -70,24 +71,32 @@ int	ft_x_type(t_list list, unsigned int nb)
 int	ft_X_type(t_list list, unsigned int nb)
 {
 	char	*tp;
-	char	*base;
 	int		len;
 	int		i;
+	int		j;
 
-	i = 13;
-	base = "0123456789ABCDEF";
-	len = 12;
-	list.len > 12 ? len = list.len : 1;
-	tp = ft_itoa_base(nb, base, 0, len);
+	i = ft_get_len_h(nb, list, 16);
+	len = i;
+	list.len > len ? len = list.len : 1;
+	tp = ft_itoa_base(nb, 0, len, i + 1);
 	len = ft_strlen(tp);
-	if (list.flag != '-' && len > 14)
+	j = len - 1;
+	i -= 1;
+	if (list.flag != '-' && j > i)
 		while(i >= 0)
 		{
-			tp[len + ((i - 1) - 13)] = tp[i];
+			tp[j] = tp[i];
 			tp[i] = ' ';
 			i--;
+			j--;
 		}
-	ft_putstr(tp);
+	i = 0;
+	while (tp[i])
+	{
+		tp[i] = ft_toupper(tp[i]);
+		i++;
+	}
+	ft_putstr(tp, len);
 	free(tp);
 	return (len);
 }

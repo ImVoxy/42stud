@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:20:51 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/20 10:30:41 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:04:04 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	ft_c_type(t_list list, char c)
 	char	*tp;
 	int		len;
 	int		start;
+	int i;
 
+	i = 0;
 	start = 0;
 	len = 1;
 	list.len > 0 ? len = list.len : 1;
@@ -28,7 +30,7 @@ int	ft_c_type(t_list list, char c)
 	tp[start] = '\0';
 	list.flag == '-' ? start = 1 : 1;
 	tp[start - 1] = c;
-	ft_putstr(tp);
+	ft_putstr(tp, len);
 	free(tp);
 	return (len);
 }
@@ -53,9 +55,16 @@ int	ft_s_type(t_list list, char *str)
 	tp[start] = '\0';
 	start -= list.pre - 1;
 	list.flag == '-' ? start = 1 : 1;
-	while (i < list.pre && str[i] && tp[start - 1])
+	if (!str)
+	{
+		start = len - list.pre + 7;
+		list.flag == '-' ? start = 7 : start;
+		list.pre -= ft_null(tp, list) + 1;
+	}
+	!str ? i = 1 : 1;
+	while (list.pre-- && tp[start - 1])
 		tp[(start++) - 1] = str[i++];
-	ft_putstr(tp);
+	ft_putstr(tp, len);
 	free(tp);
 	return (len);
 }
@@ -65,7 +74,6 @@ int	ft_d_type(t_list list, char *tp)
 	int		len;
 	int		start;
 	int		i;
-	char	s;
 
 	len = ft_strlen(tp);
 	i = len - 1;
@@ -80,7 +88,7 @@ int	ft_d_type(t_list list, char *tp)
 		while (i >= 0)
 			tp[i--] = ' ';
 	}
-	ft_putstr(tp);
+	ft_putstr(tp, len);
 	free(tp);
 	return (len);
 }

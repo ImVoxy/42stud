@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:38:08 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/21 10:43:03 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:56:20 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,20 @@ int	ft_get_len_h(unsigned int n, t_list list, int base)
 		i++;
 	i++;
 	list.pre > i ? i = list.pre : i;
+	return (i);
+}
+
+int	ft_null(char *str, t_list list)
+{
+	int		i;
+	char	*nul;
+
+	nul = "(null)";
+	i = 0;
+	while (i < list.pre && i < 6 && i < list.len)
+	{
+		str[i] = nul[i];
+		i++;
+	}
 	return (i);
 }

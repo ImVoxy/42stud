@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:17:52 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/20 12:13:39 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:04:58 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 int main(int ac, char **av)
 {
-	unsigned int	i = 546543321;
-
-	printf("%d\n", printf("||%50.20x||\n", i));
-	printf("%d\n", ft_printf("||%50.20x||\n", i));
+	char *s = "test";
+	printf("%d\n", printf("-->|%-2.*s|<--\n", -4, s));
+	printf("%d\n", ft_printf("-->|%-2.*s|<--\n", -4, s));
 	return (0);
 }

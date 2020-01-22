@@ -6,14 +6,14 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 15:33:51 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/20 11:41:23 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/22 12:07:46 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../ft_printf.h"
 
-static void		letri(char *a, long int i)
+void			letri(char *a, long int i)
 {
 	int		j;
 	int		k;
@@ -31,7 +31,7 @@ static void		letri(char *a, long int i)
 	}
 }
 
-static int		ft_abs(int n)
+int				ft_abs(int n)
 {
 	long int r;
 
@@ -40,6 +40,7 @@ static int		ft_abs(int n)
 		r *= -1;
 	return (r);
 }
+
 char			*ft_itoal(long int n, t_list list)
 {
 	int		i;

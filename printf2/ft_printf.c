@@ -6,11 +6,12 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 09:50:32 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/20 11:44:15 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:09:05 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int		ft_is_in(char c)
 {
@@ -38,13 +39,22 @@ t_list	ft_get_listed(va_list ap, const char **str)
 		list.flag = **str;
 		*str += 1;
 	}
-	(**str == '0' || **str == '-') ? list.flag = *(*str++) : 1;
+	if (**str == '0' || **str == '-') 
+	{
+		list.flag = **str;
+		*str += 1;
+	}
 	if (ft_isdigit(**str))
 		list.len = ft_atoi(str);
 	else if (**str == '*')
 	{
 		list.len = va_arg(ap, int);
 		*str += 1;
+	}
+	if (list.len < 0)
+	{
+		list.flag = '-';
+		list.len *= -1;
 	}
 	if (**str == '.')
 	{
@@ -62,6 +72,9 @@ t_list	ft_get_listed(va_list ap, const char **str)
 		list.type = **str;
 		*str += 1;
 	}
+	list.len < ft_abs(list.pre) ? list.len = ft_abs(list.pre) : 1;
+	if (list.pre < 0)
+		list.pre = -1;
 	return (list);
 }
 
