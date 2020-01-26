@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_get_len_d(int n, t_list list, int base)
+int		ft_get_len_d(int n, t_list list, int base)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	ft_get_len_d(int n, t_list list, int base)
 	return (i);
 }
 
-int	ft_get_len_h(unsigned int n, t_list list, int base)
+int		ft_get_len_h(unsigned int n, t_list list, int base)
 {
 	int i;
 
@@ -38,17 +38,31 @@ int	ft_get_len_h(unsigned int n, t_list list, int base)
 	return (i);
 }
 
-int	ft_null(char *str, t_list list)
+int		ft_null(char *str, t_list list)
 {
 	int		i;
 	char	*nul;
+	int		pre;
 
+	pre = list.pre;
+	pre == -1 && list.len > 6 ? pre = 6 : 1;
+	(list.len < 6 && list.len > -1  && list.len > pre) ? pre = list.len : 1;
 	nul = "(null)";
 	i = 0;
-	while (i < list.pre && i < 6 && i < list.len)
+	if (pre < 6 && pre != -1)
+	{
+		str[0] = ' ';
+		return (pre);
+	}
+	while (i < pre + 1 && i < 6 && i < list.len)
 	{
 		str[i] = nul[i];
 		i++;
 	}
 	return (i);
+}
+
+void	ft_reverse_tp(char *tp, t_list list)
+{
+
 }

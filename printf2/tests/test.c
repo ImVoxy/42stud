@@ -15,8 +15,8 @@
 
 int main(int ac, char **av)
 {
-	char *s = "test";
-	printf("%d\n", printf("-->|%-2.*s|<--\n", -4, s));
-	printf("%d\n", ft_printf("-->|%-2.*s|<--\n", -4, s));
+	char *c = "test";
+	printf("%d\n", printf("-->|%-2.*s|<--\n", 1, c));
+	printf("%d\n", ft_printf("-->|%-2.*s|<--\n", 1, c));
 	return (0);
 }

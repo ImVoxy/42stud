@@ -31,7 +31,7 @@ OBJS_B		= $(addprefix $(OBJS_B_PATH)/,$(OBJS_B_NAME))
 
 CC			= gcc
 RM			= rm -rf
-CFLAGS		= -Wall -Wextra -Werror -I./includes
+CFLAGS		= -Wall -Werror -Wextra -I./includes
 
 
 bonus				:	$(OBJS) $(OBJS_B)

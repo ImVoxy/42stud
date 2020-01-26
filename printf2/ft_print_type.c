@@ -17,9 +17,7 @@ int	ft_c_type(t_list list, char c)
 	char	*tp;
 	int		len;
 	int		start;
-	int i;
 
-	i = 0;
 	start = 0;
 	len = 1;
 	list.len > 0 ? len = list.len : 1;
@@ -30,41 +28,20 @@ int	ft_c_type(t_list list, char c)
 	tp[start] = '\0';
 	list.flag == '-' ? start = 1 : 1;
 	tp[start - 1] = c;
-	ft_putstr(tp, len);
+	ft_putstr(tp);
 	free(tp);
 	return (len);
 }
-
+#include <stdio.h>
 int	ft_s_type(t_list list, char *str)
 {
 	char	*tp;
-	int		len;
-	int		start;
-	int		i;
-
-	i = 0;
-	start = 0;
-	list.len > 0 ? len = list.len : 1;
-	list.pre == -1 ? list.pre = ft_strlen(str) : 1;
-	len = list.pre;
-	list.len > 0 ? len = list.len : 1;
-	if (!(tp = malloc((len + 1) * sizeof(char))))
+	
+	if (!(tp = ft_callocs((len + 1), sizeof(char))))
 		return (-1);
-	while (start < len)
-		tp[start++] = ' ';
-	tp[start] = '\0';
-	start -= list.pre - 1;
-	list.flag == '-' ? start = 1 : 1;
-	if (!str)
-	{
-		start = len - list.pre + 7;
-		list.flag == '-' ? start = 7 : start;
-		list.pre -= ft_null(tp, list) + 1;
-	}
-	!str ? i = 1 : 1;
-	while (list.pre-- && tp[start - 1])
-		tp[(start++) - 1] = str[i++];
-	ft_putstr(tp, len);
+
+	ft_reverse_tp(tp, list);
+	ft_putstr(tp);
 	free(tp);
 	return (len);
 }
@@ -80,7 +57,7 @@ int	ft_d_type(t_list list, char *tp)
 	start = 0;
 	while (tp[start] && tp[start] != ' ')
 		start++;
-	start > 0 ? start -- : 1;
+	start > 0 ? start-- : 1;
 	if (list.flag == '+')
 	{
 		while (start >= 0 && i >= 0)

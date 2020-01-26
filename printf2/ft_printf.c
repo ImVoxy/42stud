@@ -27,6 +27,7 @@ void	ft_init_list(t_list *list)
 	list->flag = '+';
 	list->len = -1;
 	list->pre = -1;
+	list->size = 0;
 }
 
 t_list	ft_get_listed(va_list ap, const char **str)
@@ -72,7 +73,7 @@ t_list	ft_get_listed(va_list ap, const char **str)
 		list.type = **str;
 		*str += 1;
 	}
-	list.len < ft_abs(list.pre) ? list.len = ft_abs(list.pre) : 1;
+//	list.len < ft_abs(list.pre) ? list.len = ft_abs(list.pre) : 1;
 	if (list.pre < 0)
 		list.pre = -1;
 	return (list);

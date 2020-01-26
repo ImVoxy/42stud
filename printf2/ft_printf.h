@@ -23,6 +23,7 @@ typedef struct	s_list
 	char			flag;
 	int				len;
 	int				pre;
+	int				size;
 
 }				t_list;
 
@@ -51,7 +52,8 @@ char			*ft_strdup(const char *s1);
 char			*ft_itoa_base(long nbr, int test, int len, int j);
 
 void			ft_init_list(t_list *list);
-void			ft_putstr(char *s, int len);
+void			ft_putstr(char *s);
+void			ft_reverse_tp(chat *tp, t_list list);
 
 size_t			ft_strlen(const char *str);
 
