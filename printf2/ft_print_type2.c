@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:25:56 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/22 14:49:53 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/27 11:23:40 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_p_type(t_list list, unsigned long nb)
 			i--;
 		}
 	i = 0;
-	ft_putstr(tp, len);
+	ft_putstr(tp);
 	free(tp);
 	return (len);
 }
@@ -63,7 +63,7 @@ int	ft_x_type(t_list list, unsigned int nb)
 			i--;
 			j--;
 		}
-	ft_putstr(tp, len);
+	ft_putstr(tp);
 	free(tp);
 	return (len);
 }
@@ -96,7 +96,7 @@ int	ft_X_type(t_list list, unsigned int nb)
 		tp[i] = ft_toupper(tp[i]);
 		i++;
 	}
-	ft_putstr(tp, len);
+	ft_putstr(tp);
 	free(tp);
 	return (len);
 }

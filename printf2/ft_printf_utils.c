@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:38:08 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/22 15:56:20 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:07:21 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,11 @@ int		ft_null(char *str, t_list list)
 	int		pre;
 
 	pre = list.pre;
-	pre == -1 && list.len > 6 ? pre = 6 : 1;
-	(list.len < 6 && list.len > -1  && list.len > pre) ? pre = list.len : 1;
+	pre == -1 && ft_strlen(str) >= 6 ? pre = 6 : 1;
+	pre == -1 ? pre = ft_strlen(str) : 1;
 	nul = "(null)";
 	i = 0;
-	if (pre < 6 && pre != -1)
-	{
-		str[0] = ' ';
-		return (pre);
-	}
-	while (i < pre + 1 && i < 6 && i < list.len)
+	while (i < pre && i < 6 && nul[i])
 	{
 		str[i] = nul[i];
 		i++;
@@ -62,7 +57,24 @@ int		ft_null(char *str, t_list list)
 	return (i);
 }
 
-void	ft_reverse_tp(char *tp, t_list list)
+void	ft_reverse_tp(char *tp)
 {
+	char	c;
+	int		i;
+	int		pre;
 
+	i = ft_strlen(tp) - 1;
+	pre = 0;
+	while (tp[pre] != ' ')
+		pre++;
+	pre--;
+	if (i > pre)
+		while (pre >= 0)
+		{
+			c = tp[i];
+			tp[i] = tp[pre];
+			tp[pre] = c;
+			i--;
+			pre--;
+		}
 }

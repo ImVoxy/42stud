@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 09:50:32 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/22 16:09:05 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/27 14:02:12 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ t_list	ft_get_listed(va_list ap, const char **str)
 	{
 		list.len = va_arg(ap, int);
 		*str += 1;
-	}
-	if (list.len < 0)
-	{
-		list.flag = '-';
-		list.len *= -1;
+		if (list.len < 0)
+		{
+			list.flag = '-';
+			list.len *= -1;
+		}
 	}
 	if (**str == '.')
 	{

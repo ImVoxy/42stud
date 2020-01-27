@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:05:43 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/22 14:59:10 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/27 14:29:27 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char			*ft_itoa_base(long nbr, int test, int len, int j);
 
 void			ft_init_list(t_list *list);
 void			ft_putstr(char *s);
-void			ft_reverse_tp(chat *tp, t_list list);
+void			ft_reverse_tp(char *tp);
 
 size_t			ft_strlen(const char *str);
 
