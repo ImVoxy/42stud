@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 15:33:51 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/27 16:10:17 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/28 12:13:37 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,17 @@ char			*ft_itoal(long int n, t_list list)
 		return (NULL);
 	if (i == 1)
 		a[0] = '-';
-	while (n >= 10 || n <= -10)
+	while ((n >= 10 || n <= -10) && a[i])
 	{
 		a[i] = ft_abs(n % 10) + 48;
 		i++;
 		n /= 10;
 	}
-	a[i++] = ft_abs(n % 10) + 48;
+	if ((n || list.pre == -1) && a[i])
+		a[i++] = ft_abs(n % 10) + 48;
 	(list.flag == '0') && (list.pre < 0) ? list.pre = size : 1;
-	while (((a[0] == '-') ? i - 1 : i) < list.pre)
-			a[i++] = '0';
+	while (((a[0] == '-') ? (i - 1) : i) < list.pre && a[i])
+		a[i++] = '0';
 	letri(a, i - 1);
 	return (a);
 }
