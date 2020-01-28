@@ -6,14 +6,14 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:38:08 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/28 12:51:43 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:09:12 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int		ft_get_len_d(int n, t_list list, int base)
+int		ft_get_len_d(long int n, t_list list, int base)
 {
 	int	i;
 	int	s;
@@ -44,7 +44,9 @@ int		ft_get_len_h(unsigned int n, t_list list, int base)
 	while (n /= base)
 		i++;
 	i++;
-	list.pre > i ? i = list.pre : i;
+	(list.flag == '0' && (list.pre > i || list.pre < 0)) ? i = list.pre : i;
+	i == -1 ? i = list.len : i;
+//	list.pre > i ? i = list.pre : i;
 	return (i);
 }
 

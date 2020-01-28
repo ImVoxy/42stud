@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:05:43 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/27 14:29:27 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/28 12:55:53 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int				ft_c_type(t_list list, char c);
 int				ft_s_type(t_list list, char *str);
 int				ft_d_type(t_list list, char *nb);
 int				ft_i_type(t_list list, char *nb);
-int				ft_get_len_d(int n, t_list list, int base);
+int				ft_get_len_d(long int n, t_list list, int base);
 int				ft_get_len_h(unsigned int n, t_list list, int base);
 
 char			*ft_callocs(size_t count, size_t size);

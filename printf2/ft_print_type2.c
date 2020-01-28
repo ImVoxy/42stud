@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:25:56 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/27 11:23:40 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:07:51 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_u_type(t_list list, char *nb)
 {
 	return (ft_d_type(list, nb));
 }
-
+#include <stdio.h>
 int	ft_x_type(t_list list, unsigned int nb)
 {
 	char	*tp;
@@ -56,7 +56,7 @@ int	ft_x_type(t_list list, unsigned int nb)
 	j = len - 1;
 	i -= 1;
 	if (list.flag != '-' && j > i)
-		while(i >= 0)
+		while(i >= 0 && tp[j])
 		{
 			tp[j] = tp[i];
 			tp[i] = ' ';

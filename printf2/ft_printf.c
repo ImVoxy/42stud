@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 09:50:32 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/27 14:02:12 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/28 13:14:34 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int		ft_is_in(char c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
-		|| c ==  'x' || c == 'X')
+		|| c ==  'x' || c == 'X' || c == '%')
 		return (1);
 	return (0);
 }
@@ -87,6 +87,7 @@ int		ft_print_it(va_list ap, const char **str)
 	l = 0;
 	list = ft_get_listed(ap, str);
 	list.type == 'c' ? l += ft_c_type(list, va_arg(ap, int)) : 1;
+	list.type == '%' ? l += ft_c_type(list, '%') : 1;
 	list.type == 's' ? l += ft_s_type(list, va_arg(ap, char *)) : 1;
 	list.type == 'p' ? l += ft_p_type(list, va_arg(ap, unsigned long)) : 1;
 	list.type == 'd' ? l += ft_d_type(list, ft_itoal(va_arg(ap, int), list)) : 1;
