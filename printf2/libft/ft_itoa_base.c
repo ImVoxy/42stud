@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:14:04 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/28 16:03:40 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/29 10:32:31 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_reverse_tab(char *str, int test)
 
 	i = 0;
 	result = ft_strdup(str);
-	j = 11;
+	j = ft_strlen(str);
 	if (test)
 	{
 		result[0] = '0';
@@ -48,27 +48,28 @@ char	*ft_reverse_tab(char *str, int test)
 	free(str);
 	return (result);
 }
-
+#include <stdio.h>
 char	*ft_itoa_base(long nbr, int test, int len, int j)
 {
 	char	*result;
 	int		i;
 	int		base_len;
-	char *base;
+	char	*base;
 
 	base = "0123456789abcdef";
 	if (!(result = ft_callocs((len + 1), sizeof(char))))
 		return (NULL);
 	i = 0;
 	base_len = ft_strlen(base);
-	while (nbr / base_len)
+	while ((nbr / base_len) && (i < j - 1))
 	{
 		result[i] = base[nbr % base_len];
 		i++;
 		nbr /= base_len;
 	}
-	result[i++] = base[nbr % base_len];
-	while (i <= j - 2)
+	if (nbr && (i < j - 1))
+		result[i++] = base[nbr % base_len];
+	while (i < j - 1)
 		result[i++] = '0';
 	return (ft_reverse_tab(result, test));
 }

@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:25:56 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/28 15:07:51 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/29 12:37:22 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ int	ft_x_type(t_list list, unsigned int nb)
 	int		i;
 	int		j;
 
+//	list.pre == -1 ? list.pre = 0 : list.pre;
 	i = ft_get_len_h(nb, list, 16);
 	len = i;
 	list.len > len ? len = list.len : 1;
+	(list.pre > len) && (list.flag == 0) ? len = list.pre - 1 : len;
 	tp = ft_itoa_base(nb, 0, len, i + 1);
 	len = ft_strlen(tp);
 	j = len - 1;

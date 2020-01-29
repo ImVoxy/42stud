@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 10:54:57 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/28 15:03:24 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/01/29 15:19:41 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int main()
 {
+	char *p;
 /*
 	printf("*************************************************\n");
 	printf("****************** TESTS %%c  ********************\n");
@@ -51,21 +52,22 @@ int main()
 	printf("%d\n", printf("+||%-4.c||\n", NULL));
 	printf("%d\n\n", ft_printf("-||%-4.c||\n", NULL));
 	printf("%d\n", printf("+||%-3.c||\n", NULL));
-	printf("%d\n\n", ft_printf("-||%-3c||\n", NULL));
-	printf("%d\n", printf("+||%-3c||\n", NULL));
 	printf("%d\n\n", ft_printf("-||%-3.c||\n", NULL));
-	printf("%d\n", printf("+||%-3.c||\n", 'y'));
-	printf("%d\n\n", ft_printf("-||%-3c||\n", 'y'));
-	printf("%d\n", printf("+||%-3c||\n", 'y'));
-	printf("%d\n\n", ft_printf("-||%-3.c||\n", 'y'));
+	printf("%d\n", printf("+||%-4.c||\n", NULL));
+	printf("%d\n\n", ft_printf("-||%-4.c||\n", NULL));
+	printf("%d\n", printf("+||%-4.c||\n", 123456));
+	printf("%d\n\n", ft_printf("-||%-4.c||\n", 123456));
+	printf("%d\n", printf("+||%-3c||\n", "ab"));
+	printf("%d\n\n", ft_printf("-||%-3c||\n","ab"));
 
 	printf("\n*************************************************\n");
 	printf("*************************************************\n\n");
 
+
 	printf("*************************************************\n");
 	printf("****************** TESTS %%%%  ********************\n");
-	printf("*************************************************\n\n\n");
 
+	printf("*************************************************\n\n\n");
 	printf("%d\n", printf("+||%%||\n"));
 	printf("%d\n\n", ft_printf("-||%%||\n"));
 	printf("%d\n", printf("+||%045%||\n"));
@@ -332,7 +334,7 @@ int main()
 
 	printf("\n*************************************************\n");
 	printf("*************************************************\n\n");
-*/
+
 
 	printf("*************************************************\n");
 	printf("******************* TESTS %%x  *******************\n");
@@ -393,9 +395,73 @@ int main()
 	printf("%d\n", printf("+||%012.*x|<--\n", 4, 123456));
 	printf("%d\n\n", ft_printf("-||%012.*x|<--\n", 4, 123456));
 	printf("%d\n", printf("+||%012.*x|<--\n", 5, 123456));
-	printf("%d\n\n", ft_printf("-||%012.*x|<--\n", 5, 123456));
-	printf("%d\n", printf("+||%012.*x|<--\n", 3, 123456));
 	printf("%d\n\n", ft_printf("-||%012.*x|<--\n", 3, 123456));
+	printf("%d\n", printf("+||%0.*x|<--\n", -4, 123456));
+	printf("%d\n\n", ft_printf("-||%0.*x|<--\n", -4, 123456));
+	printf("%d\n", printf("+-->|%-4.1x|<--\n", 0));
+	printf("%d\n\n", ft_printf("--->|%-4.1x|<--\n", 0));
+	printf("%d\n", printf("+-->|%4x|<--\n", 0));
+	printf("%d\n\n", ft_printf("--->|%4x|<--\n", 0));
+
+	printf("\n*************************************************\n");
+	printf("*************************************************\n\n");
+*/
+	printf("*************************************************\n");
+	printf("******************* TESTS %%p  *******************\n");
+	printf("*************************************************\n\n\n");
+
+	printf("%d\n", printf("+||%p|<--\n", &p));
+	printf("%d\n\n", ft_printf("-||%p|<--\n", &p));
+	printf("%d\n", printf("+||%.*p|<--\n", -4, &p));
+	printf("%d\n\n", ft_printf("-||%.*p|<--\n", -4, &p));
+	printf("%d\n", printf("+||%012.*p|<--\n", 4, &p));
+	printf("%d\n\n", ft_printf("-||%012.*p|<--\n", 4, &p));
+	printf("%d\n", printf("+||%012.*p|<--\n", -4, &p));
+	printf("%d\n\n", ft_printf("-||%012.*p|<--\n", -4, &p));
+	printf("%d\n", printf("+||%-42.*p|<--\n", -4, &p));
+	printf("%d\n\n", ft_printf("-||%-42.*p|<--\n", -4, &p));
+	printf("%d\n", printf("+||%5p|<--\n", &p));
+	printf("%d\n\n", ft_printf("-||%5p|<--\n", &p));
+	printf("%d\n", printf("+||%-5p|<--\n", &p));
+	printf("%d\n\n", ft_printf("-||%-5p|<--\n", &p));
+	printf("%d\n", printf("+||%*.*p|<--\n", -12, -4, &p));
+	printf("%d\n\n", ft_printf("-||%*.*p|<--\n", -12, -4, &p));
+	printf("%d\n", printf("+||%*.*p|<--\n", 0, -4, &p));
+	printf("%d\n\n", ft_printf("-||%*.*p|<--\n", 0, -4, &p));
+	printf("%d\n", printf("+||%*.*p|<--\n", 4, 0, &p));
+	printf("%d\n\n", ft_printf("-||%*.*p|<--\n", 4, 0, &p));
+	printf("%d\n", printf("+||%015.*p|<--\n", 8, &p));
+	printf("%d\n\n", ft_printf("-||%015.*p|<--\n", 8, &p));
+	printf("%d\n", printf("+||%p|<--\n", NULL));
+	printf("%d\n\n", ft_printf("-||%p|<--\n", NULL));
+	printf("%d\n", printf("+||%.*p|<--\n", -4, NULL));
+	printf("%d\n\n", ft_printf("-||%.*p|<--\n", -4, NULL));
+	printf("%d\n", printf("+||%012.*p|<--\n", -4, NULL));
+	printf("%d\n\n", ft_printf("-||%012.*p|<--\n", -4, NULL));
+	printf("%d\n", printf("+||%-42.*p|<--\n", -4, NULL));
+	printf("%d\n\n", ft_printf("-||%-42.*p|<--\n", -4, NULL));
+	printf("%d\n", printf("+||%5p|<--\n", NULL));
+	printf("%d\n\n", ft_printf("-||%5p|<--\n", NULL));
+	printf("%d\n", printf("+||%-5p|<--\n", NULL));
+	printf("%d\n\n", ft_printf("-||%-5p|<--\n", NULL));
+	printf("%d\n", printf("+||%*.*p|<--\n", -12, -4, NULL));
+	printf("%d\n\n", ft_printf("-||%*.*p|<--\n", -12, -4, NULL));
+	printf("%d\n", printf("+||%*.*p|<--\n", 0, -4, NULL));
+	printf("%d\n\n", ft_printf("-||%*.*p|<--\n", 0, -4, NULL));
+	printf("%d\n", printf("+||%*.*p|<--\n", 4, 0, NULL));
+	printf("%d\n\n", ft_printf("-||%*.*p|<--\n", 4, 0, NULL));
+	printf("%d\n", printf("+||%015.*p|<--\n", 8, NULL));
+	printf("%d\n\n", ft_printf("-||%015.*p|<--\n", 8, NULL));
+	printf("%d\n", printf("+-->|%-4.*p|<--\n", 4, NULL));
+	printf("%d\n\n", ft_printf("--->|%-4.*p|<--\n", 4, NULL));
+	printf("%d\n", printf("+-->|%-4.0p|<--\n", NULL));
+	printf("%d\n\n", ft_printf("--->|%-4.0p|<--\n", NULL));
+	printf("%d\n", printf("+-->|%-2p|<--\n", NULL));
+	printf("%d\n\n", ft_printf("--->|%-2p|<--\n", NULL));
+	printf("%d\n", printf("+-->|%-*p|<--\n", 0, NULL));
+	printf("%d\n\n", ft_printf("--->|%-*p|<--\n", 0, NULL));
+	printf("%d\n", printf("+-->|%-4.p|<--\n", NULL));
+	printf("%d\n\n", ft_printf("--->|%-4.p|<--\n", NULL));
 
 	printf("\n*************************************************\n");
 	printf("*************************************************\n\n");
