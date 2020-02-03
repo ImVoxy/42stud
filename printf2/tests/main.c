@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 10:54:57 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/29 15:19:41 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/03 12:38:15 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -462,6 +462,12 @@ int main()
 	printf("%d\n\n", ft_printf("--->|%-*p|<--\n", 0, NULL));
 	printf("%d\n", printf("+-->|%-4.p|<--\n", NULL));
 	printf("%d\n\n", ft_printf("--->|%-4.p|<--\n", NULL));
+	printf("%d\n", printf("+-->|%4.p|<--\n", NULL));
+	printf("%d\n\n", ft_printf("--->|%4.p|<--\n", NULL));
+	printf("%d\n", printf("+-->|%*p|<--\n", 0, NULL));
+	printf("%d\n\n", ft_printf("--->|%*p|<--\n", 0, NULL));
+	printf("%d\n", printf("+-->|%-16p|<--\n", &p));
+	printf("%d\n\n", ft_printf("--->|%-16p|<--\n", &p));
 
 	printf("\n*************************************************\n");
 	printf("*************************************************\n\n");

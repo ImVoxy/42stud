@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:17:52 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/22 16:04:58 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/03 13:07:18 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 int main(int ac, char **av)
 {
 	char *c = "test";
-	printf("%d\n", printf("-->|%-2.*s|<--\n", 1, c));
-	printf("%d\n", ft_printf("-->|%-2.*s|<--\n", 1, c));
+//	printf("%d\n", printf("szRLTyh%9s%%%x%04.*X%%\n", "wh7FLrVg 7mZLy2 0rMGR43Jnpn69u9hRGvBlq", -2147483647, 0, 1311641604));
+//	printf("%d\n", ft_printf("szRLTyh%9s%%%x%04.*X%%\n", "wh7FLrVg 7mZLy2 0rMGR43Jnpn69u9hRGvBlq", -2147483647, 0, 1311641604));
+	printf("%d\n", printf("++%9s\n", "wh7FLrVg 7mZLy2 0rMGR43Jnpn69u9hRGvBlq"));
+	printf("%d\n", ft_printf("--%9s\n", "wh7FLrVg 7mZLy2 0rMGR43Jnpn69u9hRGvBlq"));
 	return (0);
 }
