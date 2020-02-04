@@ -6,12 +6,11 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:25:56 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/03 12:29:52 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:04:11 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_p_type(t_list list, unsigned long nb)
 {
@@ -24,11 +23,11 @@ int	ft_p_type(t_list list, unsigned long nb)
 		return (ft_print_nul_p(list));
 	j = 0;
 	len = list.len;
+//	nb && (len < 14) ? len = 14 : len;
 	if (nb && len < 14)
 		len = 14;
 	i = len - 1;
 	tp = ft_itoa_base((long int)nb, 1, len, 13);
-	len = ft_strlen(tp);
 	while (tp[j] != ' ' && tp[j])
 		j++;
 	if (j)
@@ -44,7 +43,7 @@ int	ft_p_type(t_list list, unsigned long nb)
 	i = 0;
 	ft_putstr(tp);
 	free(tp);
-	return (len);
+	return (ft_strlen(tp));
 }
 
 int	ft_u_type(t_list list, char *nb)
@@ -59,7 +58,6 @@ int	ft_x_type(t_list list, unsigned int nb)
 	int		i;
 	int		j;
 
-//	list.pre == -1 ? list.pre = 0 : list.pre;
 	i = ft_get_len_h(nb, list, 16);
 	len = i;
 	list.len > len ? len = list.len : 1;

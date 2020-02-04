@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:14:04 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/03 10:32:28 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/04 14:57:57 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_reverse_tab(char *str, int test)
 	free(str);
 	return (result);
 }
-#include <stdio.h>
+
 char	*ft_itoa_base(long nbr, int test, int len, int j)
 {
 	char	*result;

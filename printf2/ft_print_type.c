@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:20:51 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/27 15:43:00 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/04 14:38:21 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	ft_c_type(t_list list, char c)
 	free(tp);
 	return (len);
 }
+
 int	ft_s_type(t_list list, char *str)
 {
 	char	*tp;
@@ -53,9 +54,8 @@ int	ft_s_type(t_list list, char *str)
 	else
 		ft_null(tp, list);
 	if (list.flag != '-')
-		ft_reverse_tp(tp);
-	if (tp)
-		ft_putstr(tp);
+		ft_reverse_tp(tp, pre - 1);
+	ft_putstr(tp);
 	free(tp);
 	return (len);
 }

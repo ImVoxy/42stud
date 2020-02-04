@@ -6,12 +6,11 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:38:08 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/03 13:13:09 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/04 14:38:45 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int		ft_get_len_d(long int n, t_list list, int base)
 {
@@ -46,7 +45,8 @@ int		ft_get_len_h(unsigned int n, t_list list, int base)
 	while (n /= base)
 		i++;
 	i++;
-	(list.pre < 0 && list.flag != '-' && list.pre > i) || (list.pre < 0 && list.flag == '0') ? list.pre = list.len : list.pre;
+	(list.pre < 0 && list.flag != '-' && list.pre > i) || 
+	(list.pre < 0 && list.flag == '0') ? list.pre = list.len : list.pre;
 	i < list.pre ? i = list.pre : i;
 	return (i);
 }
@@ -70,17 +70,14 @@ int		ft_null(char *str, t_list list)
 	return (i);
 }
 
-void	ft_reverse_tp(char *tp)
+void	ft_reverse_tp(char *tp, int size)
 {
 	char	c;
 	int		i;
 	int		pre;
 
 	i = ft_strlen(tp) - 1;
-	pre = 0;
-	while (tp[pre] != ' ')
-		pre++;
-	pre--;
+	pre = size;
 	if (i > pre)
 		while (pre >= 0)
 		{
