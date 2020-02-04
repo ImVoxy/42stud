@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/15 10:17:52 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 14:48:36 by alpascal         ###   ########.fr       */
+/*   Created: 2019/11/04 12:22:18 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/15 12:02:31 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../ft_printf.h"
 
-int main(int ac, char **av)
+int	ft_isdigit(int c)
 {
-	char *c = "test";
-
-	printf("!%d!", printf("-->|%-13.p|<--\n", &c));
-	printf("!%d!", ft_printf("-->|%-13.p|<--\n", &c));
-
-	return (0);
+	if (c < '0' || c > '9')
+		return (0);
+	return (1);
 }

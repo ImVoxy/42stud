@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/15 10:17:52 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 14:48:36 by alpascal         ###   ########.fr       */
+/*   Created: 2019/11/10 09:33:54 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/20 10:34:12 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../ft_printf.h"
 
-int main(int ac, char **av)
+char	*ft_strdup(const char *s1)
 {
-	char *c = "test";
+	int		i;
+	char	*cpy;
 
-	printf("!%d!", printf("-->|%-13.p|<--\n", &c));
-	printf("!%d!", ft_printf("-->|%-13.p|<--\n", &c));
-
-	return (0);
+	i = 0;
+	if (!(cpy = (char *)ft_callocs(ft_strlen(s1) + 1, sizeof(char))))
+		return (NULL);
+	while (s1[i])
+	{
+		cpy[i] = s1[i];
+		i++;
+	}
+	cpy[i] = '\0';
+	return (cpy);
 }

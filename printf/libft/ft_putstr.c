@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/15 10:17:52 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 14:48:36 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/15 14:16:15 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/22 15:00:49 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../ft_printf.h"
 
-int main(int ac, char **av)
+void	ft_putstr(char *s)
 {
-	char *c = "test";
+	int	i;
 
-	printf("!%d!", printf("-->|%-13.p|<--\n", &c));
-	printf("!%d!", ft_printf("-->|%-13.p|<--\n", &c));
-
-	return (0);
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+		{
+			write(1, &s[i], 1);
+			i++;
+		}
+	}
 }

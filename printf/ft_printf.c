@@ -5,100 +5,120 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/02 13:24:58 by alpascal          #+#    #+#             */
-/*   Updated: 2020/01/14 15:15:35 by alpascal         ###   ########.fr       */
+/*   Created: 2020/01/15 09:50:32 by alpascal          #+#    #+#             */
+/*   Updated: 2020/02/04 15:51:18 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf_utils/ft_printf.h"
+#include "ft_printf.h"
 
-int		ft_get_printed(p_list *list)
+int		ft_is_in(char c)
 {
-	int		i;
-
-	i = 0;
-	while (list->next)
-	{
-		i += ft_putstrn(list->content);
-		list = list->next;
-	}
-	if (list->content)
-		i += ft_putstrn(list->content);
-//	ft_lstfree(&list);
-	return (i);
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
+	|| c == 'x' || c == 'X' || c == '%')
+		return (1);
+	return (0);
 }
 
-int		ft_flag_loop(p_list *list, char *str, char *c, va_list ap)
+void	ft_init_list(t_list *list)
 {
-	int		i;
-	int		j;
-	int		*d;
-
-	j = 0;
-	i = 0;
-	d = ft_flag_mem(str, ap);
-	(str[i] == 'c' || str[i] == 's') ? (c = (ft_s_sol(ap, str[i], str, d))) : c;
-	str[i] == 'p' ? (c = ft_p_sol(ap, str, d)) : c;
-	(str[i] == 'd' || str[i] == 'i') ? (c = (ft_i_sol(ap, str, d))) : c;
-	str[i] == 'u' ? (c = (ft_u_sol(ap, str, d))) : c;
-	(str[i] == 'x' || str[i] == 'X') ? (c = ft_h_sol(ap, str[i], str, d)) : c;
-	if (str[i] == 'c' || str[i] == 's' || str[i] == 'p' || str[i] == 'd'
-	|| str[i] == 'i' || str[i] == 'u' || str[i] == 'x' || str[i] == 'X')
-//	if (c)
-		i++;
-	ft_flag_reader(list, str, d);
-	free(str);
-	free(d);
-	if (c)
-		ft_plstadd_back(&list, ft_plstnew(c));
-	return (i);
+	list->type = '0';
+	list->flag = '+';
+	list->len = -1;
+	list->pre = -1;
+	list->size = 0;
 }
 
-int		ft_get_next_flag(p_list *list, const char *str, int i, va_list ap)
+t_list	ft_get_listed(va_list ap, const char **str)
 {
-	char	*f;
-	char	*c;
-	int		j;
+	t_list list;
 
-	j = 1;
-	i += 1;
-	if (str[i] == '%')
+	ft_init_list(&list);
+	if (**str == '0' || **str == '-')
 	{
-		f = ft_substr(str, i, i + 1);
-		ft_plstadd_back(&list, ft_plstnew(f));
-		return (2);
+		list.flag = **str;
+		*str += 1;
 	}
-	j += ft_flag_loop(list, ft_substr(str, i, ft_strlen(str)), c, ap);
-	return (j);
-}
-
-p_list	*ft_get_listed(const char *str, va_list ap)
-{
-	int		i;
-	int		j;
-	p_list	*list;
-
-	i = 0;
-	while (str[i])
+	if (**str == '0' || **str == '-')
 	{
-		j = 0;
-		while (str[i + j] != '%' && str[i + j])
-			j++;
-//		if (j)
-			ft_plstadd_back(&list, ft_plstnew(ft_substr(str, i, j)));
-		i += j;
-		str[i] ? i += ft_get_next_flag(list, str, i, ap) : i;
+		list.flag = **str;
+		*str += 1;
 	}
+	if (ft_isdigit(**str))
+		list.len = ft_atoi(str);
+	else if (**str == '*')
+	{
+		list.len = va_arg(ap, int);
+		*str += 1;
+		if (list.len < 0)
+		{
+			list.flag = '-';
+			list.len *= -1;
+		}
+	}
+	if (**str == '.')
+	{
+		list.pre = 0;
+		if (ft_isdigit(*(++*str)))
+			list.pre = ft_atoi(str);
+		else if (**str == '*')
+		{
+			list.pre = va_arg(ap, int);
+			*str += 1;
+		}
+	}
+	if (ft_is_in(**str))
+	{
+		list.type = **str;
+		*str += 1;
+	}
+	if (list.pre < 0)
+		list.pre = -1;
 	return (list);
+}
+
+int		ft_print_it(va_list ap, const char **str)
+{
+	int		l;
+	t_list	list;
+
+	l = 0;
+	list = ft_get_listed(ap, str);
+	list.type == 'c' ? l += ft_c_type(list, va_arg(ap, int)) : 1;
+	list.type == '%' ? l += ft_c_type(list, '%') : 1;
+	list.type == 's' ? l += ft_s_type(list, va_arg(ap, char *)) : 1;
+	list.type == 'p' ? l += ft_p_type(list, va_arg(ap, unsigned long)) : 1;
+	list.type == 'd' ? l += ft_d_type(list,
+	ft_itoal(va_arg(ap, int), list)) : 1;
+	list.type == 'i' ? l += ft_i_type(list,
+	ft_itoal(va_arg(ap, int), list)) : 1;
+	list.type == 'u' ? l += ft_u_type(list,
+	ft_itoal(va_arg(ap, unsigned int), list)) : 1;
+	list.type == 'x' ? l += ft_x_type(list, va_arg(ap, unsigned int)) : 1;
+	list.type == 'X' ? l += ft_xx_type(list, va_arg(ap, unsigned int)) : 1;
+	return (l);
 }
 
 int		ft_printf(const char *str, ...)
 {
-	int		len;
 	va_list	ap;
+	int		len;
 
+	len = 0;
 	va_start(ap, str);
-	len = ft_get_printed(ft_get_listed(str, ap));
+	while (*str)
+	{
+		while (*str && *str != '%')
+		{
+			write(1, str++, 1);
+			len++;
+		}
+		if (*(str) == '%')
+		{
+			str++;
+			len += ft_print_it(ap, &str);
+		}
+	}
 	va_end(ap);
 	return (len);
 }

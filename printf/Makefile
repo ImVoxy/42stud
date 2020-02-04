@@ -1,49 +1,21 @@
-NAME		= libft.a
+NAME		= libftprintf.a
 
-SRCS_NAME	=	ft_atoi.c \
-				ft_bzero.c \
-				ft_calloc.c \
-				ft_isalnum.c \
-				ft_isalpha.c \
-				ft_isascii.c \
-				ft_isdigit.c \
-				ft_isprint.c \
-				ft_itoa.c \
-				ft_memccpy.c \
-				ft_memchr.c \
-				ft_memcmp.c \
-				ft_memcpy.c \
-				ft_memmove.c \
-				ft_memset.c \
-				ft_putchar_fd.c \
-				ft_putendl_fd.c \
-				ft_putnbr_fd.c \
-				ft_putstr_fd.c \
-				ft_split.c \
-				ft_strchr.c \
-				ft_strdup.c \
-				ft_strjoin.c \
-				ft_strlcat.c \
-				ft_strlcpy.c \
-				ft_strlen.c \
-				ft_strmapi.c \
-				ft_strncmp.c \
-				ft_strnstr.c \
-				ft_strrchr.c \
-				ft_strtrim.c \
-				ft_substr.c \
-				ft_tolower.c \
-				ft_toupper.c
+SRCS_NAME	=	ft_printf.c \
+				ft_print_type.c \
+				ft_print_type2.c \
+				ft_printf_utils.c \
+				libft/ft_atoi.c \
+				libft/ft_callocs.c \
+				libft/ft_isdigit.c \
+				libft/ft_itoa_base.c \
+				libft/ft_itoal.c \
+				libft/ft_putstr.c \
+				libft/ft_strdup.c \
+				libft/ft_strlen.c \
+				libft/ft_toupper.c \
+				libft/ft_abs.c
 
-SRCS_B_NAME	=	ft_lstadd_front.c \
-				ft_lstnew.c \
-				ft_lstsize.c \
-				ft_lstlast.c \
-				ft_lstadd_back.c \
-				ft_lstdelone.c \
-				ft_lstclear.c \
-				ft_lstiter.c \
-				ft_lstmap.c
+SRCS_B_NAME	= 
 
 OBJS_NAME	= $(SRCS_NAME:.c=.o)
 OBJS_B_NAME	= $(SRCS_B_NAME:.c=.o)
@@ -59,7 +31,7 @@ OBJS_B		= $(addprefix $(OBJS_B_PATH)/,$(OBJS_B_NAME))
 
 CC			= gcc
 RM			= rm -rf
-CFLAGS		= -Wall -Wextra -Werror -I./includes
+CFLAGS		= -Wall -Werror -Wextra -I./includes
 
 
 bonus				:	$(OBJS) $(OBJS_B)

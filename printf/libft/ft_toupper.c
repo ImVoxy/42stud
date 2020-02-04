@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/15 10:17:52 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 14:48:36 by alpascal         ###   ########.fr       */
+/*   Created: 2019/11/19 13:05:41 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/22 10:46:01 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../ft_printf.h"
 
-int main(int ac, char **av)
+int	ft_toupper(int c)
 {
-	char *c = "test";
-
-	printf("!%d!", printf("-->|%-13.p|<--\n", &c));
-	printf("!%d!", ft_printf("-->|%-13.p|<--\n", &c));
-
-	return (0);
+	if (c < 123 && c > 96)
+		c -= 32;
+	return (c);
 }

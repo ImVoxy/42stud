@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/15 10:17:52 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 14:48:36 by alpascal         ###   ########.fr       */
+/*   Created: 2019/11/04 11:44:26 by alpascal          #+#    #+#             */
+/*   Updated: 2020/01/16 12:26:05 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../ft_printf.h"
 
-int main(int ac, char **av)
+size_t	ft_strlen(const char *str)
 {
-	char *c = "test";
+	int size;
 
-	printf("!%d!", printf("-->|%-13.p|<--\n", &c));
-	printf("!%d!", ft_printf("-->|%-13.p|<--\n", &c));
-
-	return (0);
+	if (!str)
+		return (6);
+	size = 0;
+	while (str[size])
+		size++;
+	return (size);
 }
