@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 09:50:32 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 15:51:18 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/05 13:26:49 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,30 +51,11 @@ t_list	ft_get_listed(va_list ap, const char **str)
 		list.len = va_arg(ap, int);
 		*str += 1;
 		if (list.len < 0)
-		{
 			list.flag = '-';
+		if (list.len < 0)
 			list.len *= -1;
-		}
 	}
-	if (**str == '.')
-	{
-		list.pre = 0;
-		if (ft_isdigit(*(++*str)))
-			list.pre = ft_atoi(str);
-		else if (**str == '*')
-		{
-			list.pre = va_arg(ap, int);
-			*str += 1;
-		}
-	}
-	if (ft_is_in(**str))
-	{
-		list.type = **str;
-		*str += 1;
-	}
-	if (list.pre < 0)
-		list.pre = -1;
-	return (list);
+	return (list = ft_still_listed(ap, str, list));
 }
 
 int		ft_print_it(va_list ap, const char **str)

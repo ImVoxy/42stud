@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:38:08 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 14:38:45 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/05 13:15:30 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		ft_get_len_h(unsigned int n, t_list list, int base)
 	while (n /= base)
 		i++;
 	i++;
-	(list.pre < 0 && list.flag != '-' && list.pre > i) || 
+	(list.pre < 0 && list.flag != '-' && list.pre > i) ||
 	(list.pre < 0 && list.flag == '0') ? list.pre = list.len : list.pre;
 	i < list.pre ? i = list.pre : i;
 	return (i);
@@ -87,4 +87,27 @@ void	ft_reverse_tp(char *tp, int size)
 			i--;
 			pre--;
 		}
+}
+
+t_list	ft_still_listed(va_list ap, const char **str, t_list list)
+{
+	if (**str == '.')
+	{
+		list.pre = 0;
+		if (ft_isdigit(*(++*str)))
+			list.pre = ft_atoi(str);
+		else if (**str == '*')
+		{
+			list.pre = va_arg(ap, int);
+			*str += 1;
+		}
+	}
+	if (ft_is_in(**str))
+	{
+		list.type = **str;
+		*str += 1;
+	}
+	if (list.pre < 0)
+		list.pre = -1;
+	return (list);
 }

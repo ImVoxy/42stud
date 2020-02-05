@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 15:33:51 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 14:59:36 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/05 13:43:06 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void			letri(char *a, long int i)
 	if (a[0] == '-')
 		j++;
 	k = ((i + 1) + j) / 2;
-	while (i >= k)
+	while (i >= k && a[i] && a[j])
 	{
 		c = a[i];
 		a[i--] = a[j];
@@ -51,8 +51,8 @@ char			*ft_itoal(long int n, t_list list)
 	if (n < 0)
 		i = 1;
 	if (!(a = ft_callocs(size + 1, sizeof(char))))
-		return (NULL);
-	if (i == 1)
+		return (malloc(0));
+	if (i == 1 && a[0])
 		a[0] = '-';
 	while ((n >= 10 || n <= -10) && a[i])
 	{

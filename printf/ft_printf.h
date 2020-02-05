@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:05:43 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 15:24:13 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/05 13:04:24 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void			ft_reverse_tp(char *tp, int size);
 size_t			ft_strlen(const char *str);
 
 t_list			ft_get_listed(va_list ap, const char **str);
+t_list			ft_still_listed(va_list ap, const char **str, t_list list);
 
 #endif
