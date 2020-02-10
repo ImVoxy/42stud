@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:25:56 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 15:24:02 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/10 14:07:45 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	ft_p_type(t_list list, unsigned long nb)
 	if (!nb)
 		return (ft_print_nul_p(list));
 	j = 0;
-	len = list.len;
-	(nb != 0) && (len < 14) ? len = 14 : len;
+	len = ft_get_len_h(nb, list, 16, 1) + 2;
+	list.len > len ? len = list.len : len;
 	i = len - 1;
 	tp = ft_itoa_base((long int)nb, 1, len, 13);
 	while (tp[j] != ' ' && tp[j])
@@ -52,7 +52,7 @@ int	ft_x_type(t_list list, unsigned int nb)
 	int		i;
 	int		j;
 
-	i = ft_get_len_h(nb, list, 16);
+	i = ft_get_len_h(nb, list, 16, 0);
 	len = i;
 	list.len > len ? len = list.len : 1;
 	(list.pre > len) && (list.flag == 0) ? len = list.pre - 1 : len;
@@ -80,7 +80,7 @@ int	ft_xx_type(t_list list, unsigned int nb)
 	int		i;
 	int		j;
 
-	i = ft_get_len_h(nb, list, 16);
+	i = ft_get_len_h(nb, list, 16, 0);
 	len = i;
 	list.len > len ? len = list.len : 1;
 	tp = ft_itoa_base(nb, 0, len, i + 1);

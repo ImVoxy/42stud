@@ -6,30 +6,26 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 13:20:51 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/04 14:38:21 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/10 14:14:23 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_c_type(t_list list, char c)
+int	ft_c_type(t_list list, int c)
 {
-	char	*tp;
 	int		len;
-	int		start;
+	int		i;
 
-	start = 0;
+	i = 1;
 	len = 1;
 	list.len > 0 ? len = list.len : 1;
-	if (!(tp = malloc((len + 1) * sizeof(char))))
-		return (-1);
-	while (start < len)
-		tp[start++] = ' ';
-	tp[start] = '\0';
-	list.flag == '-' && c ? start = 1 : 1;
-	tp[start - 1] = c;
-	ft_putstr(tp);
-	free(tp);
+	if (list.flag == '-')
+		write(1, &c, 1);
+	while (i++ < len)
+		write(1, " ", 1);
+	if (list.flag != '-')
+		write(1, &c, 1);
 	return (len);
 }
 

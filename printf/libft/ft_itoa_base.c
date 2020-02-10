@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:14:04 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/05 13:46:13 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/10 13:26:18 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ char	*ft_itoa_base(long nbr, int test, int len, int j)
 		return (malloc(0));
 	i = 0;
 	base_len = ft_strlen(base);
-	while ((nbr / base_len) && (i < j - 1))
+	while ((nbr / base_len) && result[i])
 	{
 		result[i] = base[nbr % base_len];
 		i++;
 		nbr /= base_len;
 	}
-	if (nbr && (i < j - 1))
+	if (nbr && result[i])
 		result[i++] = base[nbr % base_len];
-	while (i < j - 1)
+	while (i < j - 1 && !test)
 		result[i++] = '0';
 	return (ft_reverse_tab(result, test));
 }

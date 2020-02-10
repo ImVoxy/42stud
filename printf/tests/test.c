@@ -6,21 +6,21 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 10:17:52 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/05 13:21:27 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/10 13:35:01 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../ft_printf.h"
 
-int main(int ac, char **av)
+int main()
 {
-	char *c = "test";
-
-	printf("!%d!", printf("-->|%13.45d|<--\n", 123));
-	printf("!%d!", ft_printf("-->|%13.45d|<--\n", 123));
-	printf("!%d!", printf("-->|%*.45d|<--\n", -13, 123));
-	printf("!%d!", ft_printf("-->|%*.45d|<--\n", -13, 123));
-
+unsigned int *c;
+	printf("-->|%-11p|<--\n", &c);
+	ft_printf("-->|%-11p|<--\n", &c);
+	printf("-->|%-16.p|<--\n", &c);
+	ft_printf("-->|%-16.p|<--\n", &c);
+	printf("-->|%-16.p|<--\n", &c);
+	ft_printf("-->|%-16.p|<--\n", &c);
 	return (0);
 }

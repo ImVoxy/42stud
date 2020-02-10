@@ -6,7 +6,7 @@
 /*   By: alpascal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 11:38:08 by alpascal          #+#    #+#             */
-/*   Updated: 2020/02/05 13:15:30 by alpascal         ###   ########.fr       */
+/*   Updated: 2020/02/10 14:13:51 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,18 @@ int		ft_get_len_d(long int n, t_list list, int base)
 	return (i);
 }
 
-int		ft_get_len_h(unsigned int n, t_list list, int base)
+int		ft_get_len_h(unsigned long n, t_list list, int base, int test)
 {
 	int i;
 
 	i = 0;
-	if (list.pre == 0 && n == 0)
+	if (list.pre == 0 && n == 0 && !test)
 		return (0);
 	while (n /= base)
 		i++;
 	i++;
-	(list.pre < 0 && list.flag != '-' && list.pre > i) ||
+	if (!test)
+		(list.pre < 0 && list.flag != '-' && list.pre > i) ||
 	(list.pre < 0 && list.flag == '0') ? list.pre = list.len : list.pre;
 	i < list.pre ? i = list.pre : i;
 	return (i);
