@@ -1,0 +1,64 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/10/06 14:32:10 by alpascal          #+#    #+#              #
+#    Updated: 2020/10/07 21:33:57 by alpascal         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# IMAGE
+FROM debian:buster
+MAINTAINER Alexandre PASCAL <alpascal@student.42.fr>
+
+# INSTALL & UPDATE
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get install -y 	wget
+RUN apt-get install -y 	curl
+RUN apt-get install -y 	nginx
+RUN apt-get install -y 	default-mysql-server
+RUN apt-get install -y 	php7.3 php7.3-fpm php7.3-mysql php-json php-mbstring
+RUN apt-get install -y	mariadb-server
+
+# SSL
+RUN mkdir -p /etc/nginx/ssl
+RUN openssl req	-x509 \
+		-nodes \
+		-days 365 \
+		-newkey rsa:2048 \
+		-out /etc/nginx/ssl/lesite.crt \
+		-keyout /etc/nginx/ssl/lesite.key \
+		-subj "/C=FR/ST=Paris/0=42/OU=alpascal/CN=lesite"
+
+# PHPMA INSTALL
+RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
+RUN tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz
+RUN mv ./phpMyAdmin-5.0.2-all-languages/ /var/www/phpmyadmin/
+RUN rm -rf phpMyAdmin-5.0.2-all-languages.tar.gz
+
+# WP INSTALL
+RUN wget https://fr.wordpress.org/latest-fr_FR.tar.gz
+RUN tar -zvxf latest-fr_FR.tar.gz -C /var/www/
+RUN rm -rf latest-fr_FR.tar.gz
+
+# COPY CONFIG FILES
+RUN mkdir -p /var/www/wordpress
+ADD srcs/wp-config.php /var/www/wordpress/
+ADD srcs/nginx.conf /etc/nginx/conf.d/nginx.conf
+ADD srcs/config.inc.php /var/www/phpmyadmin/config.inc.php
+
+# Ports
+EXPOSE	80 443
+
+# START SERVICES
+CMD	service nginx start \
+	&& service mysql start \
+	&& echo "CREATE DATABASE wordpress;" | mysql -u root --skip-password \
+	&& echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'root'@'localhost' WITH GRANT OPTION;" | mysql -u root --skip-password \
+	&& echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password \
+	&& echo "update mysql.user set plugin='mysql_native_password' where user='root';" | mysql -u root --skip-password \
+	&& service php7.3-fpm start \
+	&& bash
