@@ -14,6 +14,8 @@
 FROM debian:buster
 MAINTAINER Alexandre PASCAL <alpascal@student.42.fr>
 
+ENV index_var "on"
+
 # INSTALL & UPDATE
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y 	wget
@@ -41,17 +43,15 @@ RUN mv ./phpMyAdmin-5.0.2-all-languages/ /var/www/lesite/phpmyadmin/
 RUN rm -rf phpMyAdmin-5.0.2-all-languages.tar.gz
 
 # WP INSTALL
-RUN wget https://fr.wordpress.org/latest-fr_FR.tar.gz
-RUN tar -zvxf latest-fr_FR.tar.gz -C /var/www/lesite/
-RUN rm -rf latest-fr_FR.tar.gz
+RUN mkdir -p /var/www/lesite/wordpress
+COPY srcs/wordpress.tar.gz /tmp
+RUN tar -xzf /tmp/wordpress.tar.gz --strip-components=1 -C /var/www/lesite/wordpress/
 
 # COPY CONFIG FILES
-RUN mkdir -p /var/www/lesite/wordpress
 ADD srcs/wp-config.php /var/www/lesite/wordpress/
 ADD srcs/nginx.conf /etc/nginx/conf.d/nginx.conf
+ADD srcs/nginx.conf /etc/nginx/sites-available/default
 ADD srcs/config.inc.php /var/www/lesite/phpmyadmin/config.inc.php
-ADD srcs/index.php /var/www/lesite/index.php
-ADD srcs/autoindex_on.sh /var/www/lesite/
 ADD srcs/autoindex_off.sh /var/www/lesite/
 
 # Ports
@@ -65,8 +65,9 @@ CMD	service nginx start \
 	&& echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password \
 	&& echo "update mysql.user set plugin='mysql_native_password' where user='root';" | mysql -u root --skip-password \
 	&& service php7.3-fpm start \
-	&& chmod +x /var/www/lesite/autoindex_on.sh \
 	&& chmod +x /var/www/lesite/autoindex_off.sh \
 	&& chmod 755 /etc/nginx/conf.d/nginx.conf \
 	&& echo "cd /var/www/lesite/" > ~/.bashrc \
+	&& ./var/www/lesite/autoindex_off.sh \
 	&& bash
+#	&& tail -f /dev/null

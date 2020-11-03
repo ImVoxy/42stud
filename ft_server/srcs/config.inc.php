@@ -32,6 +32,10 @@ $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['host'] = 'localhost';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
+#$cfg['Servers'][$i]['ssl'] = true;
+#$cfg['Servers'][$i]['ssl_key'] = '/etc/nginx/ssl/lesite.key';
+#$cfg['Servers'][$i]['ssl_cert'] = '/etc/nginx/ssl/lesite.crt';
+#$cfg['Servers'][$i]['ssl_verify'] = false;
 
 /**
  * phpMyAdmin configuration storage settings.
