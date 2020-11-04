@@ -50,9 +50,9 @@ RUN tar -xzf /tmp/wordpress.tar.gz --strip-components=1 -C /var/www/lesite/wordp
 # COPY CONFIG FILES
 ADD srcs/wp-config.php /var/www/lesite/wordpress/
 ADD srcs/nginx.conf /etc/nginx/conf.d/nginx.conf
-ADD srcs/nginx.conf /etc/nginx/sites-available/default
 ADD srcs/config.inc.php /var/www/lesite/phpmyadmin/config.inc.php
 ADD srcs/autoindex_off.sh /var/www/lesite/
+RUN rm /etc/nginx/sites-enabled/default
 
 # Ports
 EXPOSE	80 443
@@ -66,7 +66,7 @@ CMD	service nginx start \
 	&& echo "update mysql.user set plugin='mysql_native_password' where user='root';" | mysql -u root --skip-password \
 	&& service php7.3-fpm start \
 	&& chmod +x /var/www/lesite/autoindex_off.sh \
-	&& chmod 755 /etc/nginx/conf.d/nginx.conf \
+	&& chmod +w /etc/nginx/conf.d/nginx.conf \
 	&& echo "cd /var/www/lesite/" > ~/.bashrc \
 	&& ./var/www/lesite/autoindex_off.sh \
 	&& bash
