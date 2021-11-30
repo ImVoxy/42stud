@@ -6,7 +6,7 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:09:21 by alpascal          #+#    #+#             */
-/*   Updated: 2021/11/29 19:38:43 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:55:01 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,32 @@ void	ft_threesort(t_head *head, t_config *config)
 int		ft_path_finder(int *tab, int j, int max)
 {
 	int	i;
-	int k;
+	int 	k;
 
-	i = 0;
+	i = 1;
 	k = 0;
-	while (i < max && j > tab[i])
+	while (i < max && !(j > tab[i - 1] && j < tab[i]))
 		i++;
-	while (k < max && j < tab[max - 1 - k])
+	while (k < max - 1 && !(j > tab[max - 2 - k] && j < tab[max - 1 - k]))
 		k++;
-	printf("%d, %d, %d\n", i, k, max);
+			//	if (tab[k] > j)
+//	{
+//		while (i < max - 1 && j > tab[i])
+//			i++;
+//		while (k > 1 && j < tab[k] && j < tab[k - 1])
+//			k--;
+//	}
+//	else
+//	{
+//		while (k > 0 && j > tab[k])
+//			k--;
+//		while (i < max && j < tab[i])
+//			i++;
+//	}
+	if (k == max - 1 || i == max)
+		return (0);
 	if (k < i)
-		return (-k);
-	// if (i > (max / 2) + max % 2)
-	// 	return (-1 * (max + 1 - i));
+		return (-k - 1);
 	return (i);
 }
 
@@ -83,11 +96,11 @@ void	ft_short_sort(t_head *head, t_config *config, int j, int i)
 	i = 0;
 	while (i++ + 3 < config->count)
 		ft_pushb(head, config);
-	// if (config->count == 5 && head->b->value > head->b->next->value)
-	// 	ft_swapb(head, config);
+//	 if (config->count == 5 && head->b->value > head->b->next->value)
+//		ft_swapb(head, config);
 	ft_threesort(head, config);
 	i = 0;
-	while (config->count - i > 4)
+	while (config->count - i > 3)
 	{
 		tab = sorted_tab(head->a, config, 0, 0);
 		s = ft_path_finder(tab, head->b->value, 3 + i);
@@ -107,14 +120,16 @@ void	ft_short_sort(t_head *head, t_config *config, int j, int i)
 			}
 		}
 		ft_pusha(head, config);
+		j--;
 		i++;
 		free(tab);
 	}
+	
 	if (j < 0)
-		while (j++ < config->count)
+		while (head->a->value != config->min)
 			ft_rotatea(head, config);
 	else
-		while (j-- > 0)
+		while (head->a->value != config->min)
 			ft_rev_rotatea(head, config);
 	// if (tab[2] < head->b->value)
 	// 	ft_sorted_case(head, config);

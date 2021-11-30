@@ -6,7 +6,7 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:08:06 by alpascal          #+#    #+#             */
-/*   Updated: 2021/11/29 17:57:22 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:55:09 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int argc, char **argv)
 		init_stack(count_args(&(argv[1]), 0), tab, &head);
 		parse_stack(head->a, config);
 		loop_solver(head, config);
-		test_write(head);
+	//	test_write(head);
 		ft_cleanup(head, config, tab);
 	}
 	else
