@@ -6,7 +6,7 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:05:47 by alpascal          #+#    #+#             */
-/*   Updated: 2021/11/08 16:50:35 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/11/22 16:43:01 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	check_args2(char *args, int **tab, int *i)
 		while (args[j] && (args[j] == ' ' || args[j] == '\t'))
 			j++;
 		if (args[j] && !(ft_isdigit(args[j])) && !(args[j] == '-'
-				&& !(ft_isdigit(args[j + 1]))))
+				&& (ft_isdigit(args[j + 1]))))
 			return (0);
 		if (!check_int(&(args[j])))
 			return (0);

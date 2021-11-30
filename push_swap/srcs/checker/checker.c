@@ -6,7 +6,7 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:08:06 by alpascal          #+#    #+#             */
-/*   Updated: 2021/11/15 13:48:50 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/11/19 17:11:19 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,6 @@ int	main(int argc, char **argv)
 		ft_cleanup(head, config, tab);
 	}
 	else
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 	return (0);
 }
