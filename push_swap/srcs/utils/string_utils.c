@@ -6,7 +6,7 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:05:47 by alpascal          #+#    #+#             */
-/*   Updated: 2021/11/22 16:43:01 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/12/13 01:41:52 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,6 @@ int	*check_args(char **args)
 
 	i = 0;
 	j = 0;
-	if (!args[i])
-		return (0);
 	tab = init_tab(args);
 	while (args[i])
 	{

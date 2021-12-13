@@ -6,7 +6,7 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:11:00 by alpascal          #+#    #+#             */
-/*   Updated: 2021/11/08 16:59:44 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:18:39 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	init_stack(int len, int *val, t_head **head)
 	(*head)->b = NULL;
 	(*head)->a = tmp;
 	i = 0;
-	tmp->value = val[i];
+	tmp->val = val[i];
 	tmp->next = NULL;
 	i++;
 	while (i < len)
 	{
 		tmp->next = ft_calloc(1, sizeof(t_stack));
 		tmp = tmp->next;
-		tmp->value = val[i];
+		tmp->val = val[i];
 		tmp->next = NULL;
 		i++;
 	}
@@ -61,20 +61,24 @@ void	parse_stack(t_stack *a, t_config *config)
 {
 	t_stack	*tmp;
 
-	config->min = a->value;
-	config->max = a->value;
+	config->min = a->val;
+	config->max = a->val;
 	config->count = 0;
 	config->op = 0;
 	tmp = a;
 	while (tmp)
 	{
-		if (tmp->value > config->max)
-			config->max = tmp->value;
-		if (tmp->value < config->min)
-			config->min = tmp->value;
+		if (tmp->val > config->max)
+			config->max = tmp->val;
+		if (tmp->val < config->min)
+			config->min = tmp->val;
 		config->count++;
 		tmp = tmp->next;
 	}
+	if (config->count > 250)
+		config->s = 20;
+	else
+		config->s = 10;
 }
 
 int	*exit_checker(int *tab, int i)

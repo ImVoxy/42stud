@@ -6,81 +6,98 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:09:21 by alpascal          #+#    #+#             */
-/*   Updated: 2021/11/30 12:55:01 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:10:27 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	last_val(t_head *head)
+void	min_val(t_head *head, t_config *config, int max)
 {
-	t_stack	*tmp;
+	int	*tab;
+	int	val;
+	int	i;
+	int	spot;
 
-	tmp = head->a;
-	while (tmp->next)
-		tmp = tmp->next;
-	return (tmp->value);
+	spot = 0;
+	i = 0;
+	val = head->a->val;
+	tab = sorted_tab(head->a, config, 0, 0);
+	while (i < max)
+	{
+		if (tab[i] < val)
+		{
+			val = tab[i];
+			spot = i;
+		}
+		i++;
+	}
+	if (spot <= max / 2)
+		while (spot-- > 0)
+			ft_rotatea(head, config);
+	else
+		while (spot++ < max)
+			ft_rev_rotatea(head, config);
+	free(tab);
+}
+
+int	check_limits(int *tab, int val, int max)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	j = tab[0];
+	k = tab[0];
+	while (i < max)
+	{
+		if (tab[i] < j)
+			j = tab[i];
+		if (tab[i] > k)
+			k = tab[i];
+		i++;
+	}
+	if (val > k)
+		return (1);
+	else if (val < j)
+		return (-1);
+	else
+		return (0);
 }
 
 void	ft_threesort(t_head *head, t_config *config)
 {
-	if (head->a->value > head->a->next->value)
+	if (head->a->val > head->a->next->val)
 		ft_swapa(head, config);
-	if (head->a->value > head->a->next->next->value)
+	if (head->a->val > head->a->next->next->val)
 		ft_rev_rotatea(head, config);
-	if (head->a->next->value > head->a->next->next->value)
+	if (head->a->next->val > head->a->next->next->val)
 	{
 		ft_rev_rotatea(head, config);
 		ft_swapa(head, config);
 	}
 }
 
-// void	ft_sorted_case(t_head *head, t_config *config)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	// ft_rev_rotatea(head, config);
-// 	if (config->count == 5)
-// 		ft_swapb(head, config);
-// 	while(i < config->count - 3)
-// 	{
-// 		ft_pusha(head, config);
-// 		i++;
-// 	}
-// 	while (i > 0)
-// 	{
-// 		ft_rotatea(head, config);
-// 		i--;
-// 	}
-// }
-
-int		ft_path_finder(int *tab, int j, int max)
+int	ft_path_finder(int *tab, int max, t_head *head, t_config *config)
 {
 	int	i;
-	int 	k;
+	int	k;
 
 	i = 1;
 	k = 0;
-	while (i < max && !(j > tab[i - 1] && j < tab[i]))
+	if (check_limits(tab, head->b->val, max) != 0)
+	{
+		min_val(head, config, max);
+		return (0);
+	}
+	while (i < max && !(head->b->val > tab[i - 1]
+			&& head->b->val < tab[i]))
 		i++;
-	while (k < max - 1 && !(j > tab[max - 2 - k] && j < tab[max - 1 - k]))
+	while (k < max - 1 && !(head->b->val > tab[max - 2 - k]
+			&& head->b->val < tab[max - 1 - k]))
 		k++;
-			//	if (tab[k] > j)
-//	{
-//		while (i < max - 1 && j > tab[i])
-//			i++;
-//		while (k > 1 && j < tab[k] && j < tab[k - 1])
-//			k--;
-//	}
-//	else
-//	{
-//		while (k > 0 && j > tab[k])
-//			k--;
-//		while (i < max && j < tab[i])
-//			i++;
-//	}
-	if (k == max - 1 || i == max)
+	if (i == max)
 		return (0);
 	if (k < i)
 		return (-k - 1);
@@ -96,61 +113,16 @@ void	ft_short_sort(t_head *head, t_config *config, int j, int i)
 	i = 0;
 	while (i++ + 3 < config->count)
 		ft_pushb(head, config);
-//	 if (config->count == 5 && head->b->value > head->b->next->value)
-//		ft_swapb(head, config);
 	ft_threesort(head, config);
 	i = 0;
 	while (config->count - i > 3)
 	{
 		tab = sorted_tab(head->a, config, 0, 0);
-		s = ft_path_finder(tab, head->b->value, 3 + i);
-		while (s != 0)
-		{
-			if (s < 0)
-			{
-				ft_rev_rotatea(head, config);
-				s++;
-				j--;
-			}
-			else
-			{
-				ft_rotatea(head, config);
-				s--;
-				j++;
-			}
-		}
+		s = ft_path_finder(tab, 3 + i, head, config);
+		ft_short_sort2(head, config, s);
 		ft_pusha(head, config);
-		j--;
 		i++;
 		free(tab);
 	}
-	
-	if (j < 0)
-		while (head->a->value != config->min)
-			ft_rotatea(head, config);
-	else
-		while (head->a->value != config->min)
-			ft_rev_rotatea(head, config);
-	// if (tab[2] < head->b->value)
-	// 	ft_sorted_case(head, config);
-	// else
-	// {
-	// 	while (i <= 3 && j < config->count - 3)
-	// 	{
-	// 		if (tab[i] > head->b->value || i == 3)
-	// 		{
-	// 			ft_pusha(head, config);
-	// 			j++;
-	// 		}
-	// 		else
-	// 			i++;
-	// 		ft_rotatea(head, config);
-	// 	}
-	// 	if (i + j <= config->count / 2)
-	// 		while (config->count > 3 && i-- + j > 0)
-	// 			ft_rev_rotatea(head, config);
-	// 	else
-	// 		while (config->count > 3 && i++ + j < config->count)
-	// 			ft_rotatea(head, config);
-	// }
+	min_val(head, config, config->count);
 }

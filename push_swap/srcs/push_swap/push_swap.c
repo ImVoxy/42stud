@@ -6,7 +6,7 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 17:08:06 by alpascal          #+#    #+#             */
-/*   Updated: 2021/11/30 12:55:09 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/12/13 01:42:06 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	test_write(t_head *head)
 	write(1, "-> test stack a\n", 16);
 	while (tmp)
 	{
-		ft_putnbr_fd(tmp->value, 1);
+		ft_putnbr_fd(tmp->val, 1);
 		tmp = tmp->next;
 		write(1, " ", 1);
 	}
@@ -29,7 +29,7 @@ void	test_write(t_head *head)
 	tmp = head->b;
 	while (tmp)
 	{
-		ft_putnbr_fd(tmp->value, 1);
+		ft_putnbr_fd(tmp->val, 1);
 		tmp = tmp->next;
 		write(1, " ", 1);
 	}
@@ -42,7 +42,7 @@ int	loop_solver(t_head *head, t_config *config)
 		return (0);
 	else if (config->count == 2)
 	{
-		if (head->a->value > head->a->next->value)
+		if (head->a->val > head->a->next->val)
 			ft_swapa(head, config);
 	}
 	else if (config->count <= 5)
@@ -60,14 +60,16 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	tab = check_args(&(argv[1]));
-	if (tab && count_args(&(argv[1]), 0))
+	if (tab)
 	{
 		head = ft_calloc(1, sizeof(t_head));
 		config = ft_calloc(1, sizeof(t_config));
-		init_stack(count_args(&(argv[1]), 0), tab, &head);
-		parse_stack(head->a, config);
-		loop_solver(head, config);
-	//	test_write(head);
+		if (count_args(&(argv[1]), 0) > 1)
+		{
+			init_stack(count_args(&(argv[1]), 0), tab, &head);
+			parse_stack(head->a, config);
+			loop_solver(head, config);
+		}
 		ft_cleanup(head, config, tab);
 	}
 	else

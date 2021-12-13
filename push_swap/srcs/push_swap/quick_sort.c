@@ -6,7 +6,7 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 13:52:56 by alpascal          #+#    #+#             */
-/*   Updated: 2021/10/26 17:22:32 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:08:42 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int	mid_value(t_stack *a, int j)
 	i = 0;
 	while (a->next && i < j - 1)
 	{
-		tab[i] = a->value;
+		tab[i] = a->val;
 		a = a->next;
 		i++;
 	}
-	tab[i] = a->value;
+	tab[i] = a->val;
 	i = 0;
 	while (i < (j - 1))
 	{
@@ -49,7 +49,7 @@ int	*ft_inf_spot(t_head *head, t_config *config, int *tab, int i)
 
 	tmp = i;
 	tmp2 = tab[i];
-	while (i > 0 && head->b->value < tab[i - 1])
+	while (i > 0 && head->b->val < tab[i - 1])
 	{
 		ft_rev_rotatea(head, config);
 		i--;
@@ -105,7 +105,7 @@ void	subdiv_sort(t_head *head, t_config *config, int i, int nb)
 	p = mid_value(head->b, i);
 	while (k <= nb)
 	{
-		if (head->b->value < p)
+		if (head->b->val < p)
 		{
 			ft_pusha(head, config);
 			ft_rotatea(head, config);
@@ -128,16 +128,16 @@ void	quick_sort(t_head *head, t_config *config)
 	int	j;
 
 	i = 0;
-	j = config->count % 40;
+	j = config->count % (config->s * 2);
 	tab = sorted_tab(head->a, config, 0, 1);
 	if (!tab)
 		return ;
 	chunk_stack(head, config, tab);
 	if (j > 1)
 		subdiv_sort(head, config, j / 2, (j / 2) - 1);
-	while ((config->count - (i * 20) - j) >= 20)
+	while ((config->count - (i * config->s) - j) >= config->s)
 	{
-		subdiv_sort(head, config, 20, 19);
+		subdiv_sort(head, config, config->s, (config->s - 1));
 		i++;
 	}
 	if (j > 0)

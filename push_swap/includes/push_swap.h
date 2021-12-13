@@ -6,7 +6,7 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 16:16:11 by alpascal          #+#    #+#             */
-/*   Updated: 2021/11/15 13:57:41 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:08:51 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ typedef struct s_config
 	int	count;
 	int	min;
 	int	max;
+	int	s;
 	int	op;
 }				t_config;
 
 typedef struct s_stack
 {
-	int				value;
+	int				val;
 	struct s_stack	*next;
 }				t_stack;
 
@@ -65,6 +66,7 @@ void	ft_quick_sort(t_head *head, t_config *config);
 void	chunk_stack(t_head *head, t_config *config, int *tab);
 void	subdiv_sort2(t_head *head, t_config *config, int k);
 void	ft_short_sort(t_head *head, t_config *config, int j, int i);
+void	ft_short_sort2(t_head *head, t_config *config, int s);
 int		mid_value(t_stack *a, int j);
 
 /*

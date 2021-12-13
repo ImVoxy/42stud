@@ -6,7 +6,7 @@
 /*   By: alpascal <alpascal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:20:13 by alpascal          #+#    #+#             */
-/*   Updated: 2021/10/26 17:20:51 by alpascal         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:06:47 by alpascal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int	*sorted_tab(t_stack *a, t_config *config, int f, int t)
 	i = 0;
 	while (a->next && i < config->count)
 	{
-		tab[i] = a->value;
+		tab[i] = a->val;
 		a = a->next;
 		i++;
 	}
-	tab[i] = a->value;
+	tab[i] = a->val;
 	if (!t)
 		return (tab);
 	i = 0;
@@ -62,16 +62,16 @@ int	chunk_stack3(t_head *head, t_config *config, int *tab, int nb)
 	int	m;
 
 	i = config->count / 2;
-	l = i - (20 * nb);
-	m = i + (20 * nb);
+	l = i - (config->s * nb);
+	m = i + (config->s * nb);
 	if (l < 0)
 		l = 0;
 	if (m > (config->count - 1))
 		m = config->count - 1;
-	if (head->a->value < tab[i - (nb - 1) * 20] && head->a->value >= tab[l])
+	if (head->a->val < tab[i - (nb - 1) * config->s] && head->a->val >= tab[l])
 		ft_pushb(head, config);
-	else if (head->a->value >= tab[i + (nb - 1) * 20]
-		&& head->a->value < tab[m])
+	else if (head->a->val >= tab[i + (nb - 1) * config->s]
+		&& head->a->val < tab[m])
 	{
 		ft_pushb(head, config);
 		ft_rotateb(head, config);
@@ -91,7 +91,7 @@ void	chunk_stack2(t_head *head, t_config *config, int *tab, int nb)
 
 	test = 0;
 	k = 0;
-	while (k <= (config->count - 1) && head->a->next && test < 40)
+	while (k <= (config->count - 1) && head->a->next && test < config->s * 2)
 	{
 		test += chunk_stack3(head, config, tab, nb);
 		k++;
@@ -109,7 +109,7 @@ void	chunk_stack(t_head *head, t_config *config, int *tab)
 	{
 		chunk_stack2(head, config, tab, i);
 		i++;
-		p = p - 40;
+		p = p - (config->s * 2);
 	}
 	ft_pushb(head, config);
 	ft_rotateb(head, config);
